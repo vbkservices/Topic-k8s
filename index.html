@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./bootstarp/js/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="./bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="./bootstarp/node_modules/jquery.dataTables.min.css">
+
+<link href="./bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="./bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<!--script src="./api/nodes.js"></script-->
+<link rel="stylesheet" href="./bootstarp/css/style.css">
+
+<script src="./java/nav.js"></script>
+<script src="./java/navber.js"></script>
+
+<body>
+    <div class="body bg-ligth">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav">
+                </div>
+            </div>
+        </div>
+        <div class="left-sm h4 px-3 pt-3">
+            <button class="btn btn-light my-3" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i
+                    class="fa fa-bars  fs-4"></i></button>
+            <a href="index.html"><button class="btn btn-light my-3" type="button"><i
+                        class="fa fa-home fs-3"></i></button></a>
+            <a href="master.html"><button class="btn btn-light my-3" type="button"><i
+                        class="fa fa-sitemap  fs-4"></i></button></a>
+            <a href="namespase.html"><button class="btn btn-light my-3" type="button"><i
+                        class="fa fa-graduation-cap fs-4"></i></button></a>
+            <a href="webtty_create.html"><button class="btn btn-light my-3" type="button"><i
+                        class="fa fa-window-maximize  fs-4"></i></button></a>
+            <a href="pod_all.html"><button class="btn btn-light my-3" type="button"><i
+                        class="fa fa-cubes  fs-4"></i></button></a>
+        </div>
+        <div class="center px-3">
+            <div class="bg-ligth py-4" style="height:15%;">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="favicon.ico" class="rounded" alt="Cinque Terre" width="70" height="50">
+                        <span class=" h4 ms-3"><b class="logo"></b></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-1">
+                <div class="col-3 mx-2">
+                    <div class="card text-center rounded-3 shadow" style="width: 100%;">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <h2 class="card-title"><i class="fa fa-sitemap  fs-1 mx-3"></i><b>集群</b></h2>
+                                    <p class="card-text my-3 fs-6">主要由三台實體電腦組由的kubernetes集群
+                                        </br>能各自看到三台的cpu、記憶體及硬碟空間
+                                        </br>也能觀察kubernetes集群內的容器數量</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <ol class="breadcrumb fs-4 ">
+                                        <li class="breadcrumb-item">master</li>
+                                        <li class="breadcrumb-item">node1</li>
+                                        <li class="breadcrumb-item ">node2</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 mx-2">
+                    <div class="card text-center rounded-3 shadow" style="width: 100%;">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <h2 class="card-title"><i class="fa fa-graduation-cap fs-1 mx-3"></i><b>課程</b></h2>
+                                    <p class="card-text my-3 fs-6">主要是使用kubernetes namespase來部署課程
+                                        </br>是使用namespase將容量規劃在一個特定的空間
+                                        </br>由教師進行建立課程以在內建立容器給學生操作</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>
+                                        <ol class="breadcrumb fs-5 ">
+                                            <li class="breadcrumb-item">查看課程</li>
+                                            <li class="breadcrumb-item">部屬課程</li>
+                                            <li class="breadcrumb-item ">刪除課程</li>
+                                        </ol>
+                                    </b>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 mx-2">
+                    <div class="card text-center rounded-3 shadow" style="width: 100%;">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <h2 class="card-title"><i class="fa fa-window-maximize fs-1 mx-3"></i><b>連線</b></h2>
+                                    <p class="card-text my-3 fs-6">是使用tmux來進行連線終端管理
+                                        </br>主要能將目前的畫面進度進行保留方便使用者
+                                        </br>接來下能在對上次的進度進行修改
+                                        </br>也有讓使用者來分享畫面給其他人觀看</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>
+                                        <ol class="breadcrumb fs-5">
+                                            <li class="breadcrumb-item">連線畫面</li>
+                                            <li class="breadcrumb-item">連線操作</li>
+                                        </ol>
+                                    </b>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 mx-2">
+                    <div class="card text-center rounded-3 shadow" style="width: 100%;">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <h2 class="card-title"><i class="fa fa-cubes  fs-1 mx-3"></i><b>容器</b></h2>
+                                    <p class="card-text my-3 fs-6">是管理者能查看各容器的運行狀況
+                                        </br>管理者也能依使用者需求將容器進行資源管理
+                                        </br>教師也對容器環境進行調整
+                                        </br>也能將處理完的環境進行部屬給學生操作</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>
+                                        <ol class="breadcrumb fs-5 ">
+                                            <li class="breadcrumb-item">容器狀態</li>
+                                            <li class="breadcrumb-item">容器環境</li>
+                                            <li class="breadcrumb-item ">容器資源</li>
+                                        </ol>
+                                    </b>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>

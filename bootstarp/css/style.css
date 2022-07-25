@@ -1,0 +1,114 @@
+/*整體的style*/
+* {
+    font-family: Arial, Helvetica, sans-serif ;
+   /*border-style: solid;*/
+}
+.body {
+    display: flex;
+}
+/*側引導列*/
+.left-sm{
+    width: 5vw;
+    margin: 0;
+    /*border-top-right-radius :5%;
+    border-bottom-right-radius : 5%;
+    box-shadow: 5px 0px 20px rgba(138, 138, 138, 0.7);
+    transition : 0.5s;
+    overflow: scroll;
+    font-size: 2vw;*/
+    background-color: rgb(255, 255, 255);
+}
+.left {
+    /*-width: 18vw;*/
+    height: 100vh;
+
+    font-size: 2vw;
+    background-color: rgb(255, 255, 255);
+
+}
+.center {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+}
+/*.rigth {
+    width: 25vw;
+    height: 99vh;
+    border:5%;
+    box-shadow: -5px 0px 20px rgba(138, 138, 138, 0.7);
+    background-color: rgb(255, 255, 255);
+}*/
+li .btn {
+    background-color:cadetblue;
+}
+.btn-dark{
+    background-color:cadetblue;
+}
+/*
+.left *{
+    word-break: break-all;換行
+    overflow:auto
+}
+.left div{
+    width: 100%;
+    margin-left: 15px;
+    margin-top: 30px;
+    overflow:auto
+}
+.left div h2{
+    overflow:auto
+    垂直置中
+    vertical-align: middle;
+    margin-left: 15px;
+    display:inline;
+    font-size: 32px;
+}
+div.left ul{
+    width: 70%;
+    margin-left: 15px;
+    margin-top: 15px;
+    list-style-type:none;
+    font-size: 28px;
+}
+div.left ul i{
+    font-size:48px;
+    color:red;
+    margin-right: 15px;
+}
+div.left ul p{
+      border-radius: 20px;
+      background-color: white;
+      color: black;
+}
+div.left ul span{
+   margin-bottom: 15px;
+}
+div.left ul .smailul{
+    border-radius: 20px;
+}
+div.left ul .smailul p{
+    border: 2px solid #555555;
+    margin:0px;
+    margin-bottom: 5%;
+    text-align: center;
+}
+div.left ul button:hover {
+    background-color: #555555;
+    color: white;
+  }
+*/
+/*內容*/
+
+/*
+.navborde{
+    box-shadow: 2px 2px 5px rgb(117, 117, 117);
+    border-radius:50%;
+    height: 100vh;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+.navbtn{
+    position: relative;
+    left: 80%;
+    top: 50%;
+}*/
