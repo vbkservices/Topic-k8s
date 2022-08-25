@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../bootstarp/css/style.css">
+<script src="../nav/nav.js"></script>
+<script src="../nav/navber.js"></script>
+<script src="./js/namespase_create.js"></script>
+
+<body>
+    <div class="body bg-ligth">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav"></div>
+            </div>
+        </div>
+        <div class="left-sm h4 px-3 pt-3" id="nav-sm"></div>
+
+        <div class="center px-3">
+            <div class="bg-ligth py-4" style="height:15%;">
+                <div class="row">
+                    <div class="col-12"  id="center-logo">
+                    </div>
+                    <div class="col-12 my-4">
+                        <a class="btn btn-dark py-1 mx-2 html" href="namespase.html" value="master">查看課程</a>
+                        <a class="btn btn-dark py-1 mx-2 html" href="namespase_create.html" value="node1">部屬課程</a>
+                        <a class="btn btn-dark py-1 mx-2 html" href="namespase_delete.html" value="node2">刪除課程</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left-sm col-2">
+                </div>
+                <div class="col-10">
+                    <div class="row position-relative fs-4">
+                        <div class="col-10 mx-2 position-absolute top-0 start-50 translate-middle-x">
+                            <h1 class="text-center my-2 ">部屬測試</h1>
+                                <div class="form-group row my-2">
+                                    <label for="course" class="col-sm-2 col-form-label">容器類別</label>
+                                    <div class="col-sm-10 py-2">
+                                        <select class="form-control form-control-sm" id="contianer">
+                                            <option value="student" selected>學生容器</option>
+                                            <option value="teacher">教師容器</option>
+                                            <option value="system">系統容器</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row my-2">
+                                    <label for="course" class="col-sm-2 col-form-label">課程名</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="course" placeholder="course">
+                                    </div>
+                                </div>
+                                <div class="form-group row  my-2">
+                                    <label for="contianer" class="col-sm-2 col-form-label">使用者</br>(學號)</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="contianername" placeholder="contianer name">
+                                    </div>
+                                </div>
+                                <div class="form-group row my-2">
+                                    <label for="images" class="col-sm-2 col-form-label">選擇映像檔</label>
+                                    <div class="col-sm-10 py-2">
+                                        <select class="form-control form-control-sm" id="images">
+                                            <option value="rockylinux" selected>預設(rockylinux)</option>
+                                            <option value="rockylinux" >rockylinux</option>
+                                            <option value="mysql">mysql</option>
+                                            <option value="httpd">httpd</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="httpifname">
+                                    <div class="form-group row my-2">
+                                        <label for="images" class="col-sm-2 col-form-label">容量</label>
+                                        <div class="col-sm-4 py-2">
+                                            <select class="form-control form-control-sm" id="volume">
+                                                <option value="0.5">0.5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2 ">
+                                        <label for="cpu" class="col-sm-2 col-form-label">cpu</label>
+                                        <div class="col-sm-4 py-2">
+                                            <select class="form-control form-control-sm" id="cpu">
+                                                <option value="0.5">0.5</option>
+                                            </select>
+                                        </div>
+                                        <label for="memory" class="col-sm-2 col-form-label">memory</label>
+                                        <div class="col-sm-4 py-2">
+                                            <select class="form-control form-control-sm" id="memory">
+                                                <option value="0.5">0.5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary my-1" id="yaml">部屬</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./bootstarp/js/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="./bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="./bootstarp/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="./api/pod_status.js"></script>
+<!--script src="./api/nodes.js"></script-->
+<link rel="stylesheet" href="./bootstarp/css/style.css">
+<script src="./api/gotty_pod.js"></script>
+
+<script src="./java/nav.js"></script>
+<script src="./java/navber.js"></script>
+
+
+<body>
+    <div class="body bg-ligth">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav"></div>
+            </div>
+        </div>
+        <div class="left-sm h4 px-3 pt-3" id="nav-sm"></div>
+
+        <div class="center px-3">
+            <div class="bg-ligth py-4" style="height:15%;">
+                <div class="row">
+                    <div class="col-12"  id="center-logo">
+                    </div>
+                <div class="col-12 my-4">
+                    <div class="row">
+                        <div class="col-8">
+                            <a class="btn btn-dark " href="webtty_create.html">連線狀況</a>
+                            <a class="btn btn-dark " href="webtty_status.html">連線狀況</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="row">
+              <div class="col-12">
+                <table class="table">
+                  <div class="col-10 my-3 mx-4 rounded-3 shadow">
+                    <table class="table my-3">
+                        <thead class="text-muted">
+                            <tr>
+                                <th scope="col">容器名<i class="mx-1 fa fa-sort-desc"></i></th>
+                                <th scope="col">課程<i class="mx-1 fa fa-sort-desc"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody id="example">
+                            <tr>
+                                <th colspan="5" class="text-center">
+                                    <div>沒有部屬容器</div>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </table>
+              </div>
+          </div>
+        </div>
+</body>
+
+</html>
