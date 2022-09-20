@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../bootstarp/css/style.css">
+<script src="../nav/users/nav.js"></script>
+<script src="../nav/users/navber.js"></script>
+<script>
+    const fddjs = new FormData();
+    fddjs.append('apikey', 'kqzt+7MNF0nJFf+3uB8tRw==');
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            const forms = document.getElementsByClassName("needs-validation");
+            var validation = Array.prototype.filter.call(forms, function (forms) {
+                forms.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    $("#k8s_repasswd").removeClass("is-invalid")
+                    forms.classList.add('was-validated');
+                    if (forms.checkValidity() === false) {
+                        event.stopPropagation();
+                    } else {
+                        if ($('#k8s_passwd').val() != $('#k8s_repasswd').val()) {
+                            document.querySelector('#k8s_repasswd').value = "";
+                            let demo = document.getElementById("k8s_repasswd").classList;
+                            demo.add("is-invalid");
+                            document.getElementById("error_k8s_repasswd").innerText = "密碼不一致";
+                            $("form").removeClass("was-validated")
+                        } else {
+                            fddjs.append('name', document.querySelector('#k8s_name').value);
+                            fddjs.append('username', document.querySelector('#k8s_user').value);
+                            fddjs.append('password', document.querySelector('#k8s_passwd').value);
+                            fddjs.append('email', document.querySelector('#k8s_mail').value);
+                            $.ajax({
+                                type: "post",
+                                url: 'http://120.114.142.17/sys/login/prg/k8s_login.php',
+                                data: fddjs,
+                                processData: false,
+                                contentType: false,
+                                success: function (result, status) {
+                                    let usrobj = JSON.parse(result);
+                                    if(usrobj[0]=="false"){
+                                        let error=usrobj[0]
+                                        document.querySelector('#'+usrobj[0]).value = "";
+                                    }else{
+                                        alert(usrobj[0])
+                                       // window.location.reload();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }, false);
+            });
+        }, false);
+    })();
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            const formser = document.getElementsByClassName("from-needs-validation");
+            var validation = Array.prototype.filter.call(formser, function (formser) {
+                formser.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    formser.classList.add('was-validated');
+                    if (formser.checkValidity() === false) {
+                        event.stopPropagation();
+                    } else {
+                        fddjs.append('username', document.querySelector('#k8s_login_user').value);
+                        fddjs.append('password', document.querySelector('#k8s_login_passwd').value);
+                        $.ajax({
+                            type: "post",
+                            url: 'http://120.114.142.17/sys/login/prg/k8s_reg.php',
+                            data: fddjs,
+                            processData: false,
+                            contentType: false,
+                            success: function (result, status) {
+                                let usrobj = JSON.parse(result);
+                                if (usrobj[0] == false) {
+                                    alert(usrobj[1]);
+                                } else {
+                                    alert(usrobj[1]);
+                                    localStorage.setItem("username", document.querySelector('#k8s_login_user').value);
+                                    localStorage.setItem("status", usrobj[0]);
+                                    localStorage.setItem("status", usrobj[2]);
+                                  //  localStorage.setItem("status", usrobj[0]);
+                                }
+                            }
+                        });
+                    }
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<body>
+    <div class="body bg-ligth">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav">
+                </div>
+            </div>
+        </div>
+        <!--左小圖標-->
+        <div class="left-sm h4 px-3 pt-3" id="nav-sm"></div>
+        <!--中間版面-->
+        <div class="center px-3">
+            <div class="bg-ligth py-4" style="height:15%;">
+                <div class="row  justify-content-center">
+                    <div class="col-3" id="center-logo">
+                    </div>
+                </div>
+            </div>
+            <div class="bg-ligth text-center" style="height:100%;">
+                <div class="row  justify-content-center">
+                    <div class="col-4">
+                        <nav>
+                            <div class="nav nav-tabs  justify-content-center h5" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="vfk-login-tab" data-bs-toggle="tab"
+                                    data-bs-target="#vfk-login" type="button" role="tab" aria-controls="vfk-login"
+                                    aria-selected="true"><b>登入</b></button>
+                                <button class="nav-link" id="vfk-reg-tab" data-bs-toggle="tab" data-bs-target="#vfk-reg"
+                                    type="button" role="tab" aria-controls="vfk-reg"
+                                    aria-selected="false"><b>註冊</b></button>
+                            </div>
+                        </nav>
+                        <div class="tab-content my-5" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="vfk-login" role="tabpanel"
+                                aria-labelledby="vfk-login-tab">
+                                <div class="row  justify-content-center">
+                                    <div class="col-12">
+                                        <form class="from-needs-validation" novalidate>
+                                            <div class="form-row">
+                                                <div class="form-floating col-md-12 mb-3">
+                                                    <input type="text" class="form-control" id="k8s_login_user"
+                                                        placeholder="k8s_login_user" pattern="^[a-zA-Z0-9]{6,}$"
+                                                        required>
+                                                    <label for="k8s_login_user"><b>使用者名稱</b></label>
+                                                    <div class="invalid-feedback text-start">
+                                                        請輸入
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-floating col-md-12 mb-3">
+                                                    <input type="password" class="form-control" id="k8s_login_passwd"
+                                                        placeholder="k8s_login_passwd" pattern="^[a-zA-Z0-9]{8,}$"
+                                                        maxlength="10" required>
+                                                    <label for="k8s_login_passwd"><b>密碼</b></label>
+                                                    <div class="invalid-feedback text-start">
+                                                        錯誤
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mx-2">登入</button>
+                                            <button type="button" class="btn btn-outline-primary mx-2">註冊</button>
+                                            <button type="button" class="btn btn-link mx-2">忘記密碼?</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="vfk-reg" role="tabpanel" aria-labelledby="vfk-reg-tab">
+                                <div class="row  justify-content-center">
+                                    <div class="col-12">
+                                        <form class="needs-validation" novalidate>
+                                            <div class="form-row">
+                                                <div class="form-floating col-md-12 mb-3">
+                                                    <input type="text" class="form-control" id="k8s_name"
+                                                        placeholder="k8s_name" pattern="^[A-Z0-9]{8,}$" required>
+                                                    <label for="k8s_name"><b>學號</b></label>
+                                                    <div class="invalid-feedback text-start">
+                                                        請輸入學號或用大寫輸入
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-floating col-md-12 mb-3">
+                                                    <input type="text" class="form-control" id="k8s_user"
+                                                        placeholder="k8s_user" pattern="^[a-zA-Z0-9]{1,}$" required>
+                                                    <label for="k8s_user"><b>使用者名稱</b></label>
+                                                    <div class="invalid-feedback text-start">
+                                                        請輸入姓名
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-floating col-md-12 mb-3">
+                                                    <input type="password" class="form-control" id="k8s_passwd"
+                                                        placeholder="k8s_passwd" pattern="^[a-zA-Z0-9]{8,}$"
+                                                        maxlength="10" required>
+                                                    <label for="k8s_passwd"><b>密碼(最多10碼)</b></label>
+                                                    <div class="invalid-feedback text-start">
+                                                        錯誤
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-floating col-md-12 mb-3">
+                                                    <input type="password" class="form-control" id="k8s_repasswd"
+                                                        placeholder="k8s_repasswd" pattern="^[a-zA-Z0-9]{8,}$"
+                                                        maxlength="10" required>
+                                                    <label for="k8s_repasswd"><b>確認密碼</b></label>
+                                                    <div class="invalid-feedback text-start" id="error_k8s_repasswd">
+                                                        錯誤
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-floating col-md-12 mb-3">
+                                                    <input type="email" class="form-control" id="k8s_mail"
+                                                        placeholder="k8s_mail" required>
+                                                    <label for="k8s_mail"><b>電子郵件</b></label>
+                                                    <div class="invalid-feedback text-start">
+                                                        錯誤
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <button type="submit"
+                                                class="btn btn-warning btn-lg font-weight-bold d-block ml-auto mr-4 w-25">表單提交</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><b>映像檔下載中</b></h5>
+                        </div>
+                        <div class="modal-body">
+                            <b>請勿關閉畫面及刷新頁面</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

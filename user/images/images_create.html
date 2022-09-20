@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../../bootstarp/css/style.css">
+<script src="../../nav/users/nav.js"></script>
+<script src="../../nav/users/navber.js"></script>
+<script src="./js/images_create.js"></script>
+
+<body>
+    <div class="body bg-ligth">
+        <!--左引導列-->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav">
+                </div>
+            </div>
+        </div>
+        <!--左小圖標-->
+        <div class="left-sm h4 px-3 pt-3" id="nav-sm"></div>
+        <!--中間版面-->
+        <div class="center px-3">
+            <div class="bg-ligth py-4" style="height:15%;">
+                <div class="row">
+                    <div class="col-12"  id="center-logo">
+                    </div>
+                    <div class="col-12 my-4">
+                        <a class="btn btn-dark py-1 mx-2 html" href="images.html" value="master">映像檔</a>
+                        <a class="btn btn-dark py-1 mx-2 html" href="images_create.html" value="node1">製作映像檔</a>
+                        <a class="btn btn-dark py-1 mx-2 html" href="images_dow.html" value="node1">下載映像檔</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row imagestmux mt-sm-3 mt-4" style="height:85%;">
+                <div class="col-lg-9 border border-dark " id="xtream">
+                    <div>
+                        <h4><b>容器畫面展示處</b></h4>
+                    </div>
+                </div>
+                <div class="col-3  d-sm-block d-none">
+                    <div class="row" style="height: 100%;">
+                        <div class="col-12" >
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">容器詳細</button>
+                                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">部署容器</button>
+                                </div>
+                              </nav>
+                              <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <div class="row py-3" id="containerlist">
+        
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                    <div class="row position-relative fs-4">
+                                        <div class="col-12 position-absolute top-0 start-50 translate-middle-x">
+                                                <div class="form-group row my-2">
+                                                    <label for="course" class="col-sm-12 col-form-label">名字</label></p>
+                                                    <div class="col-sm-12 py-2">
+                                                        <input type="text" class="form-control" id="containername" placeholder="images name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row my-2">
+                                                    <label for="images" class="col-sm-12 col-form-label">選擇映像檔</label></p>
+                                                    <div class="col-sm-12 py-2">
+                                                        <select class="form-control form-control-sm" id="images">
+                                                            <option selected>點擊選擇映像檔</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row my-2">
+                                                    <label for="webfile" class="col-sm-12 col-form-label">上傳檔案</label></p>
+                                                    <div class="col-sm-12 py-2">
+                                                        <select class="form-control form-control-sm" id="webfile">
+                                                            <option selected>功能未開放</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row my-2" id="imagcreate">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary my-1" onclick="imgcreate()">開啟</button>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-12 imgbash " style="height:500px;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><b>上傳中</b></h5>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <div class="modal-body">
+                <b>請勿關閉畫面及刷新頁面</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</body>
+
+</html>

@@ -8,5 +8,4 @@ if($enapikey == "2727175#356"){
     $output = shell_exec('curl http://127.0.0.1:8001/api/v1/namespaces');
     echo json_encode($output);
 }
-
 ?>

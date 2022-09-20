@@ -2,30 +2,46 @@
 <title>管理者介面</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="../bootstarp/js/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="../bootstarp/css/bootstrap.css" rel="stylesheet">
-<script src="../bootstarp/js/bootstrap.bundle.min.js"></script>
+<script src="./bootstarp/js/jquery.min.js"></script>
 
-<link rel="stylesheet" href="../bootstarp/css/style.css">
-<script src="../nav/nav.js"></script>
-<script src="../nav/navber.js"></script>
-<script src="./js/namespase_create.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="./bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="./bootstarp/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="./api/namespase.js"></script>
+<!--script src="./api/nodes.js"></script-->
+<link rel="stylesheet" href="./bootstarp/css/style.css">
+
+<script src="./api/namespase_create.js"></script>
+<script src="./java/nav.js"></script>
+<script src="./java/navber.js"></script>
 
 <body>
     <div class="body bg-ligth">
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="left position-relative">
-                <div class="container pt-2" id="nav"></div>
+                <div class="container pt-2" id="nav">
+                </div>
+
             </div>
         </div>
-        <div class="left-sm h4 px-3 pt-3" id="nav-sm"></div>
-
+        <div class="left-sm h4 px-3 pt-3">
+            <button class="btn btn-light my-3"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="fa fa-bars  fs-4"></i></button>
+            <a href="index.html" ><button class="btn btn-light my-3"  type="button"><i class="fa fa-home fs-3"></i></button></a>
+            <a href="master.html" ><button class="btn btn-light my-3"  type="button"><i class="fa fa-sitemap  fs-4"></i></button></a>
+            <a href="namespase.html" ><button class="btn btn-light my-3"  type="button"><i class="fa fa-graduation-cap fs-4"></i></button></a>
+            <a href="webtty_create.html" ><button class="btn btn-light my-3"  type="button"><i class="fa fa-window-maximize  fs-4"></i></button></a>    
+            <a href="pod_all.html" ><button class="btn btn-light my-3"  type="button"><i class="fa fa-cubes  fs-4"></i></button></a>    
+        </div>
         <div class="center px-3">
             <div class="bg-ligth py-4" style="height:15%;">
                 <div class="row">
-                    <div class="col-12"  id="center-logo">
+                    <div class="col-12">
+                        <img src="favicon.ico" class="rounded" alt="Cinque Terre" width="70" height="50">
+                        <span class=" h4 ms-3"><b class="logo"></b></span>
                     </div>
                     <div class="col-12 my-4">
                         <a class="btn btn-dark py-1 mx-2 html" href="namespase.html" value="master">查看課程</a>

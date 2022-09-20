@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../../bootstarp/css/style.css">
+<script src="../../nav/users/nav.js"></script>
+<script src="../../nav/users/navber.js"></script>
+<script src="./js/namespase_nav.js"></script>
+<script src="./js/namespase.js"></script>
+
+<body>
+    <div class="body bg-ligth">
+        <!--左引導列-->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav">
+                </div>
+            </div>
+        </div>
+        <!--左小圖標-->
+        <div class="left-sm h4 px-3 pt-3" id="nav-sm"></div>
+        <!--中間版面-->
+        <div class="center px-3">
+            <div class="bg-ligth py-4" style="height:15%;">
+                <div class="row  justify-content-center">
+                    <div class="col-12" id="center-logo">
+                    </div>
+                    <div class="col-12 my-4" id="namepase_nav">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-1">
+                <table class="table mt-3" style="width:100%">
+                    <thead class="h6">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">課程</th>
+                            <th scope="col">建立時間</th>
+                            <th scope="col">建立者</th>
+                            <th scope="col">UUID</th>
+                            <th scope="col">詳細</th>
+                        </tr>
+                    </thead>
+                    <tbody id="example">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="k8s_Modal" tabindex="-1" aria-labelledby="k8s_ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="k8s_ModalLabel"><b>映像檔下載中</b></h2>
+            </div>
+            <div class="modal-body">
+                <table class="table mt-3" style="width:100%">
+                    <thead class="h6">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">學號</th>
+                            <th scope="col">選項</th>
+                        </tr>
+                    </thead>
+                    <tbody id="model_example">
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
+</html>

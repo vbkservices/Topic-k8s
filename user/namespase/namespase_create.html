@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../../bootstarp/css/style.css">
+<script src="../../nav/users/nav.js"></script>
+<script src="../../nav/users/navber.js"></script>
+<script src="./js/namespase_nav.js"></script>
+<script src="./js/namespase_create.js"></script>
+
+<body>
+    <div class="body bg-ligth">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav"></div>
+            </div>
+        </div>
+        <div class="left-sm h4 px-3 pt-3" id="nav-sm"></div>
+
+        <div class="center px-3">
+            <div class="bg-ligth py-4" style="height:15%;">
+                <div class="row">
+                    <div class="col-12" id="center-logo">
+                    </div>
+                    <div class="col-12 my-4" id="namepase_nav">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left-sm col-2">
+                </div>
+                <div class="col-10">
+                    <div class="row position-relative fs-4">
+                        <div class="col-8 mx-2 position-absolute top-0 start-50 translate-middle-x">
+                            <div class="progress m-3">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+                            <h1 class="text-center my-2 "><b>建立課程</b></h1>
+
+                            <div class="form-group row my-2">
+                                <label for="course" class="col-sm-2 col-form-label">課程名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="namepase_name" placeholder="course">
+                                </div>
+                            </div>
+
+                            <div class="form-group row my-2">
+                                <label for="course" class="col-sm-2 col-form-label">學生</label>
+                                <div class="col-sm-10">
+                                    <textarea class="md-textarea form-control" id="namepase_student"
+                                        placeholder="將上課的學生寫入(範例:4080XXXX 4080XXXX 4080XXX)"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row my-2">
+                                <label for="course" class="col-sm-2 col-form-label">是否立即開放</label>
+                                <div class="col-sm-2 pt-2">
+                                    <input type="radio" name="sex" onclick="time('yes')" value="yes">是
+                                    <input type="radio" name="sex" onclick="time('no')" value="no">否<p>
+                                </div>
+                            </div>
+
+                            <div class="form-group row my-2" id="timeadd">
+                            </div>
+                            <div class="row">
+                                <div class="col-12" id="new_container">
+                                    
+                                </div>
+                                <div class="col-12"  id="new_button">
+                                    <button type="submit" class="btn btn-primary my-1" id="create_container" onclick="create_container('true')">需同時部署容器</button>
+                                    <button type="submit" class="btn btn-primary my-1" id="create_namespase" onclick="new_namespase()">直接建立</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
