@@ -19,6 +19,7 @@ $.ajax({ //kubectll get pods
             if(value.metadata.name != "kube-system" && value.metadata.name  != "kube-public" && value.metadata.name  != "kube-node-lease"  && `${value.metadata.labels.user}`== name){
                 var creationTimestamp = (`${value.metadata.creationTimestamp}`).replace(/[A-Z]/g, " ");
                 if(`${value.metadata.labels.user}` != "undefined"){
+                    alert(`${value.metadata.labels.status}`);
                     table1 = table1 + (`<tr class="h4"><th scope="row"></th><td> ${value.metadata.name}</td><td>`+ creationTimestamp+`</td>
                     <td> ${value.metadata.labels.user}</td><td><button  type="button" class="btn btn-success"  onclick="status_pod('${value.metadata.name}')">
                     <b>查看容器</b></button><button  type="button" class="mx-2 btn btn-outline-danger"  onclick="nsdelete('${value.metadata.name}','${value.metadata.labels.user}')"><b>刪除課程</b></button></td></tr>`);

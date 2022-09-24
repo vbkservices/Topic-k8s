@@ -20,7 +20,7 @@ if($enapikey == "2727175#356"){
             break;
         case 'namespase':
             echo "刪除課程";
-            shell_exec('sudo kubectl delete namespace '.$namepase.'');
+            shell_exec('sudo kubectl label namespace '.$namepase.' status-;sudo kubectl label namespace '.$namepase.' status=delete;sudo kubectl delete namespace '.$namepase.'');
             break;
     }
 }

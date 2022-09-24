@@ -2,14 +2,19 @@ $(function () {
     let login = "";
     let smloginav = "";
     let status = localStorage.getItem("status");
+
     if (status != "true") {
-        if(location.href!="http://120.114.142.17/sys/login/login.html"){
+           
+        if (location.href != "http://120.114.142.17/sys/login/login.html") {
             document.location.href = "http://120.114.142.17/sys/login/login.html";
         }
+
     } else {
-        if(location.href=="http://120.114.142.17/sys/login/login.html"){
+
+        if (location.href == "http://120.114.142.17/sys/login/login.html") {
             document.location.href = "http://120.114.142.17/sys/user/index.html";
         }
+
         login = `
     <div class="row ms-2 mt-3">
         <div class="col-2 ms-2 p-0">
@@ -30,14 +35,14 @@ $(function () {
         <div class="col-2 ms-2 p-0">
             <i class="fa fa-cubes  me-5"></i>
         </div>
-        <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/user" ><b  class="container_user"></b></a>
+        <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/user/container" ><b  class="container_user"></b></a>
         </div>
     </div>`;
         smloginav = `<a href="http://120.114.142.17/sys/user/namespase/namespase.html"><button class="btn btn-light my-3" type="button"><i
     class="fa fa-cubes  fs-4"></i></button></a>
     <a href="http://120.114.142.17/sys/user/images/images.html"><button class="btn btn-light my-3" type="button"><i
     class="fa fa-cubes  fs-4"></i></button></a>
-        <a href="http://120.114.142.17/sys/user/images/images.html"><button class="btn btn-light my-3" type="button"><i
+        <a href="http://120.114.142.17/sys/user/container"><button class="btn btn-light my-3" type="button"><i
     class="fa fa-cubes  fs-4"></i></button></a>`;
     }
     let loginav = `<div class="row ms-2 my-3">
@@ -70,7 +75,7 @@ $(function () {
 </div>`;
     $('#nav').html(loginav)
 
-    $('#nav-sm').html(`<button class="btn btn-light my-3" type="button" data-bs-toggle="offcanvas"
+    $('#nav-sm').html(`<button class="btn btn-light my-3 " type="button" data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i
         class="fa fa-bars  fs-4"></i></button>
 <a href="http://120.114.142.17/sys/user/index.html"><button class="btn btn-light my-3" type="button"><i
@@ -80,14 +85,52 @@ $(function () {
             class="fa fa-cloud fs-4"></i></button></a>`)
 
     $('#center-logo').html(`
+    <button class="btn btn-light my-3 d-xl-none" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i
+        class="fa fa-bars  fs-4"></i></button>
     <img src="http://120.114.142.17/sys/favicon.ico" class="rounded" alt="Cinque Terre" width="70" height="50">
     <span class=" h4 ms-3"><b class="logo"></b></span>`)
-
+    navber()
 });
-function loginout(){
+function navber() {
+    $('.logo').text('Dashboard')
+    $('.index').text('首頁')
+    $('.namepase').text('課程')
+    var nodes = '<ul class="list-group list-group-flush">';
+    nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="master.html">master</a></li>';
+    nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1"  href="node1.html">node1</a></li>';
+    nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="node2.html" >node2</a></li>';
+    $('#node').html(nodes)
+
+    $('.images').text('映像檔')
+    var nodes = '<ul class="list-group list-group-flush">';
+    nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="namespase.html">查看課程</a></li>';
+    nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="namespase_create.html">部屬課程</a></li>';
+    nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="namespase_delete.html">刪除課程</a></li>';
+    $('#namespase').html(nodes)
+
+    $('.container_user').text('容器')
+    var web = '<ul class="list-group list-group-flush">';
+    web = web + '<li class="list-group-item"><a class="btn btn-dark " href="webtty_create.html">連線測試</a></li>';
+    web = web + '<li class="list-group-item"><a class="btn btn-dark " href="webtty_status.html">連線狀況</a></li>';
+    $('#webconntion').html(web)
+
+
+    $('.outlogin').text('登出')
+    var nodes = '<ul class="list-group list-group-flush">';
+    nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="teacher_pod.html">教師容器</a></li>';
+    nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="student_pod.html">學生容器</a></li>';
+    nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1">特權容器</a></li>';
+    $('#pod').html(nodes)
+    //$('.left-sm').html(li)
+
+
+    $('.nav7').text('登入及註冊')
+}
+function loginout() {
     alert("登出");
     localStorage.removeItem("name");
     localStorage.removeItem("status");
     localStorage.removeItem("user");
-    document.location.href="http://120.114.142.17/sys/login/login.html";
+    document.location.href = "http://120.114.142.17/sys/login/login.html";
 }

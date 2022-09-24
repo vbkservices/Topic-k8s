@@ -10,7 +10,7 @@ $namepase_student = $_POST["namepase_student"];
 $key="dic@ksu!2050014&";
 $enapikey=openssl_decrypt($apikey,'des-cbc',$key);
 if($enapikey == "2727175#356"){
-    shell_exec('sudo /shell/namespase/create_namespase.sh '.$namepase_name.' '.$name.' "'.$namepase_student.'"');
+    shell_exec('sudo /shell/namespase/create_namespase.sh '.$namepase_name.' '.$name.' "'.$namepase_student.'";sudo kubectl label ns ken seeport=9090;sudo kubectl label ns ken status=running');
     shell_exec('sudo echo "sudo /shell/namespase/create_namespase.sh '.$namepase_name.' "'.$namepase_student.'"" > /shell/error.log');
 }
 ?>
