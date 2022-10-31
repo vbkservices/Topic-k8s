@@ -1,7 +1,10 @@
 $(function () {
     let login = "";
     let smloginav = "";
+    let user_login = "";
+    let user_smloginav = "";
     let status = localStorage.getItem("status");
+    let user = localStorage.getItem("user");
 
     if (status != "true") {
            
@@ -14,36 +17,42 @@ $(function () {
         if (location.href == "http://120.114.142.17/sys/login/login.html") {
             document.location.href = "http://120.114.142.17/sys/user/index.html";
         }
-
-        login = `
-    <div class="row ms-2 mt-3">
-        <div class="col-2 ms-2 p-0">
-            <i class="fa fa-cubes  me-5"></i>
-        </div>
-        <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/user/namespase/namespase.html" ><b  class="namepase"></b></a>
-        </div>
-    </div>
-    <div class="row ms-2 mt-3">
-    <div class="col-2 ms-2 p-0">
-        <i class="fa fa-cubes  me-5"></i>
-    </div>
-    <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/user/images/images.html" ><b  class="images"></b></a>
-    </div>
-   </div>
-
-    <div class="row ms-2 mt-3">
-        <div class="col-2 ms-2 p-0">
-            <i class="fa fa-cubes  me-5"></i>
-        </div>
-        <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/user/container" ><b  class="container_user"></b></a>
-        </div>
-    </div>`;
-        smloginav = `<a href="http://120.114.142.17/sys/user/namespase/namespase.html"><button class="btn btn-light my-3" type="button"><i
-    class="fa fa-cubes  fs-4"></i></button></a>
+        if(user=="teacher"){
+            login = `<div class="row ms-2 mt-3">
+                <div class="col-2 ms-2 p-0">
+                    <i class="fa fa-book  me-5"></i>
+                </div>
+                <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/user/namespase/namespase.html" ><b  class="namepase"></b></a>
+                </div>
+            </div>
+            <div class="row ms-2 mt-3">
+            <div class="col-2 ms-2 p-0">
+                <i class="fa fa-clone  me-5"></i>
+            </div>
+            <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/user/images/images.html" ><b  class="images"></b></a>
+            </div>
+           </div>`;
+           smloginav=`<a href="http://120.114.142.17/sys/user/namespase/namespase.html"><button class="btn btn-light my-3" type="button"><i
+    class="fa fa-book fs-4"></i></button></a>
     <a href="http://120.114.142.17/sys/user/images/images.html"><button class="btn btn-light my-3" type="button"><i
-    class="fa fa-cubes  fs-4"></i></button></a>
-        <a href="http://120.114.142.17/sys/user/container"><button class="btn btn-light my-3" type="button"><i
-    class="fa fa-cubes  fs-4"></i></button></a>`;
+    class="fa fa-clone  fs-4"></i></button></a>`;
+            user_login=login;
+            user_smloginav=smloginav;
+        }else if(user=="student"){
+            login = "";
+            smloginav=="";
+            user_login=``+login+`
+            <div class="row ms-2 mt-3">
+            <div class="col-2 ms-2 p-0">
+                <i class="fa  fa-cube  me-5"></i>
+            </div>
+            <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/user/container" ><b  class="container_user"></b></a>
+            </div>
+        </div>`;
+        user_smloginav=``+smloginav+`<a href="http://120.114.142.17/sys/user/container"><button class="btn btn-light my-3" type="button"><i
+        class="fa  fa-cube  fs-4"></i></button></a> `;
+        };
+        
     }
     let loginav = `<div class="row ms-2 my-3">
     <div class="col-5 ms-2 p-0">
@@ -64,7 +73,7 @@ $(function () {
     <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/user/index.html" ><b  class="index"></b></a>
     </div>
 </div>
-`+ login + `
+`+ user_login + `
 <div class="row ms-2 mt-3">
     <div class="col-2 ms-2 p-0">
         <i class="fa fa-cloud  me-5"></i>
@@ -80,7 +89,7 @@ $(function () {
         class="fa fa-bars  fs-4"></i></button>
 <a href="http://120.114.142.17/sys/user/index.html"><button class="btn btn-light my-3" type="button"><i
             class="fa fa-home fs-3"></i></button></a>
-            `+ smloginav + `
+            `+ user_smloginav + `
 <a><button class="btn btn-light my-3" type="button" onclick="loginout()"><i
             class="fa fa-cloud fs-4"></i></button></a>`)
 

@@ -14,64 +14,75 @@
 <script src="./js/images_user.js"></script>
 
 <body>
-    <div class="body bg-ligth">
-        <!--左引導列-->
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-            aria-labelledby="offcanvasExampleLabel">
-            <div class="left position-relative">
-                <div class="container pt-2" id="nav">
-                </div>
-            </div>
+  <div class="body bg-ligth">
+    <!--左引導列-->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="left position-relative">
+        <div class="container pt-2" id="nav">
         </div>
-        <!--左小圖標-->
-        <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
-        <!--中間版面-->
-        <div class="center px-3">
-            <div class="bg-ligth py-4" style="height:15%;">
-                <div class="row">
-                    <div class="col-12"  id="center-logo">
-                    </div>
-                    <div class="col-12 my-4">
-                        <a class="btn btn-dark py-1 mx-2 html" href="images.html" value="master">映像檔</a>
-                        <a class="btn btn-dark py-1 mx-2 html" href="images_create.html" value="node1">製作映像檔</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row mx-1 mt-xl-2 mt-5" id="imagesuser">
-              <div class="card px-0">
-                <div class="card-header" id="images_card_heade">
-                </div>
-                <div class="card-body" id="images_card_body">
-
-                </div>
-              </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="exampleModalLabel"><b>映像檔下載中</b></h2>
-              <div class="spinner-grow text-dark" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-              <div class="spinner-grow text-dark" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-              <div class="spinner-grow text-dark" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-              <div class="spinner-grow text-dark" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </div>
-            <div class="modal-body">
-                <b>請勿關閉畫面及刷新頁面</b>
-            </div>
+    <!--左小圖標-->
+    <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
+    <!--中間版面-->
+    <div class="center px-3">
+      <div class="bg-ligth py-4" style="height:10%;">
+        <div class="row">
+          <div class="col-12" id="center-logo">
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="row mx-1 mt-xl-2 mt-5" id="imagesuser">
+            <div class="card px-0">
+              <div class="card-header text-center" id="images_card_heade">
+              </div>
+              <div class="card-body row  text-center" id="images_card_body">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 d-none d-lg-block">
+          <div class="row mx-1 mt-xl-2 mt-5">
+            <div class="card px-0">
+              <div class="card-header text-center" id="images_local_heade">
+              </div>
+              <div class="card-body row text-center" id="images_local_body">
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel"><b>映像檔下載中</b></h2>
+          <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div class="modal-body">
+          <b>請勿關閉畫面及刷新頁面</b>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 

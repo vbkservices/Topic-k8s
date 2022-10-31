@@ -44,11 +44,12 @@ $(function () {
         </div>
     </div>
 
+    
     <div class="row ms-2 mt-3">
         <div class="col-2 ms-2 p-0">
-            <i class="fa fa-cubes  me-5"></i>
+            <i class="fa fa-clone me-5"></i>
         </div>
-        <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/pod_status/pod_all.html" ><b  class="nav5"></b></a>
+        <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/images/images.html" ><b  class="nav5"></b></a>
         </div>
     </div>
 
@@ -56,7 +57,7 @@ $(function () {
         <div class="col-2 ms-2 p-0">
             <i class="fa fa-cubes  me-5"></i>
         </div>
-        <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/images/images.html" ><b  class="nav6"></b></a>
+        <div class="col-8 "><a class="text-left text-dark fs-4 py-0 btn btn-light btn-lg btn-block" href="http://120.114.142.17/sys/pod_status/pod_all.html" ><b  class="nav6"></b></a>
         </div>
     </div>
     
@@ -81,7 +82,7 @@ $(function () {
 <a href="http://120.114.142.17/sys/webtty/webtty_create.html"><button class="btn btn-light my-3" type="button"><i
             class="fa fa-window-maximize  fs-4"></i></button></a>
 <a href="http://120.114.142.17/sys/images/images.html"><button class="btn btn-light my-3" type="button"><i
-            class="fa fa-cubes  fs-4"></i></button></a>
+            class="fa fa-clone fs-4"></i></button></a>
 <a href="http://120.114.142.17/sys/pod_status/pod_all.html"><button class="btn btn-light my-3" type="button"><i
             class="fa fa-cubes  fs-4"></i></button></a>`)
 

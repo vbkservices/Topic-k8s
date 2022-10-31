@@ -37,7 +37,6 @@ fddjs.append('apikey', 'kqzt+7MNF0nJFf+3uB8tRw==');
                                 if(usrobj[0]==false){
                                     event.stopPropagation();
                                     let error=usrobj[1];
-                                    alert(error)
                                     if(error=="k8s_name"){
                                         document.querySelector('#k8s_name').value="";
                                     }else if(error=="k8s_nmail"){
@@ -82,7 +81,7 @@ fddjs.append('apikey', 'kqzt+7MNF0nJFf+3uB8tRw==');
                                 alert(usrobj[1]);
                                 localStorage.setItem("name", document.querySelector('#k8s_login_user').value);
                                 localStorage.setItem("status", usrobj[0]);
-                                localStorage.setItem("user", "teacher");
+                                localStorage.setItem("user", usrobj[2]);
                                 //localStorage.setItem("status", usrobj[0]);
                                 document.location.href = "http://120.114.142.17/sys/user/index.html";
                             }

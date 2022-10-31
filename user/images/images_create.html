@@ -27,75 +27,31 @@
         <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
         <!--中間版面-->
         <div class="center px-3">
-            <div class="bg-ligth py-4">
+            <div class="bg-ligth py-4" style="height:10%;">
                 <div class="row">
                     <div class="col-12" id="center-logo">
                     </div>
-                    <div class="col-12 my-4">
-                        <a class="btn btn-dark py-1 me-2 html" href="images.html" value="master">映像檔</a>
-                        <a class="btn btn-dark py-1 mx-2 html" href="images_create.html" value="node1">製作映像檔</a>
-                    </div>
                     <div class="col-12">
                         <div class="row imagestmux mt-sm-3 mt-4">
-                            <div class="col-xl-9 col-12 border border-dark p-0" id="xtream" style=" height: 80vh;">
-                                    <h4 class="text-center"><b>容器畫面展示處</b></h4>
+                            <div class="col-xl-9 col-12 border border-dark p-0" id="xtream" style=" height: 90vh;">
+                                <h4 class="text-center"><b>映像檔畫面展示處</b></h4>
                             </div>
-                            <div class="col-2 ms-5 d-none d-xl-block border border-dark p-0 " id="container_load">
-  
-                            </div>
-                            <!--div class="col-3  d-sm-block d-none">
-                                    <div class="row" style="height: 100%;">
-                                        <div class="col-12" >
-                                            <nav>
-                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">容器詳細</button>
-                                                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">部署容器</button>
-                                                </div>
-                                              </nav>
-                                              <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                                    <div class="row py-3" id="containerlist">
-                        
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                                    <div class="row position-relative fs-4">
-                                                        <div class="col-12 position-absolute top-0 start-50 translate-middle-x">
-                                                                <div class="form-group row my-2">
-                                                                    <label for="course" class="col-sm-12 col-form-label">名字</label></p>
-                                                                    <div class="col-sm-12 py-2">
-                                                                        <input type="text" class="form-control" id="containername" placeholder="images name">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row my-2">
-                                                                    <label for="images" class="col-sm-12 col-form-label">選擇映像檔</label></p>
-                                                                    <div class="col-sm-12 py-2">
-                                                                        <select class="form-control form-control-sm" id="images">
-                                                                            <option selected>點擊選擇映像檔</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row my-2">
-                                                                    <label for="webfile" class="col-sm-12 col-form-label">上傳檔案</label></p>
-                                                                    <div class="col-sm-12 py-2">
-                                                                        <select class="form-control form-control-sm" id="webfile">
-                                                                            <option selected>功能未開放</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row my-2" id="imagcreate">
-                                                                </div>
-                                                                <button type="submit" class="btn btn-primary my-1" onclick="imgcreate()">開啟</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                              </div>
-                                        </div>
-                                        <div class="col-12 imgbash " style="height:500px;">
-                
-                                        </div>
+                            <div class="col-2 ms-5 d-none d-xl-block ">
+                                <div class="row">
+                                    <div class="btn-group col-12" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-outline-success my-1"
+                                            onclick="new_images_from()">
+                                            建立映像檔環境</button>
+
+                                        <a type="button" class="btn btn-outline-secondary my-1"
+                                            href="images.html">上一頁</a>
                                     </div>
-                                </div-->
+                                    <div class="col-12 border p-0 overflow-auto mt-3" id="container_load">
+
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,40 +62,58 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><b>上傳中</b></h5>
-                    <div class="spinner-grow text-dark" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-dark" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-dark" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-dark" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
+                    <h5 class="modal-title" id="exampleModalLabel"><b>dasdboard</b></h5>
                 </div>
-                <div class="modal-body">
-                    <b>請勿關閉畫面及刷新頁面</b>
+                <div class="modal-body ">
+                    <form class="needvalidation">
+                        <label for="exampleInputPassword1" class="form-label me-5"> 選擇使用儲存的動作</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                value="old" required>
+                            <label class="form-check-label" for="inlineRadio1">儲存環境</label>
+                        </div>
+    
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="new" required>
+                            <label class="form-check-label" for="inlineRadio2">另存環境</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" id="res_image">確定</button>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModa2" tabindex="-1" aria-labelledby="exampleModalLabe2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabe2"><b>建立中</b></h5>
                 </div>
             </div>
         </div>
     </div>
-    <button class="btn btn-primary fixed-bottom d-xl-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">查看容器</button>
-    <div class="offcanvas offcanvas-end d-xl-none" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+
+    <button class="btn btn-primary fixed-bottom d-xl-none" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">查看容器</button>
+    <div class="offcanvas offcanvas-end d-xl-none" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
-          <h5 id="offcanvasRightLabel">查看容器</h5>
-          
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <h5 id="offcanvasRightLabel">查看容器</h5>
+
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <div class=" d-xl-none border border-dark p-0 container_load" id="container_load_none">
-                <button type="submit" class="btn btn-dark my-1"
-                onclick="new_images_from()">建立映像檔環境</button>
+                <button type="submit" class="btn btn-dark my-1" onclick="new_images_from()">建立映像檔環境</button>
+
             </div>
         </div>
-      </div>
+    </div>
 
 </body>
 

@@ -1,16 +1,38 @@
 <?php
-//kubernetes 部署yaml(namespase,pv,pvc,deploy)
-// 以json展示
 header("Access-Control-Allow-Origin: *");
+require '../../../prg/vendor/autoload.php';
+use Medoo\Medoo;
+$status=$_POST["status"];
 $apikey = $_POST["apikey"];
-$namepase = $_POST["namepase"];
-$student = $_POST["student"];
-//$mypwd="2727175#356";//$_POST["pwd"];
+$year=$_POST["year"];
+$database = new Medoo([	
+	'type' => 'mysql',
+	'host' => 'localhost',
+	'database' => 'k8s_users',
+	'username' => 'root',
+	'password' => 'dic2727175',
+    'charset' => 'utf8'
+]);
+
+$date=array();
 $key="dic@ksu!2050014&";
 $enapikey=openssl_decrypt($apikey,'des-cbc',$key);
+
 if($enapikey == "2727175#356"){
-        shell_exec('sudo kubectl label namespace '.$namepase.' '.$student.'='.$student.'');
-        shell_exec('echo "sudo kubectl label namespace '.$namepase.' '.$student.'='.$student.'">/shell/error.log');
-        echo "新增學生";
+	if($status== "status"){
+		$data=$database->query("select distinct year from `k8s_userdb`")->fetchAll();
+		echo json_encode($data) ."\n";
+	}
+
+	if($status== "student"){
+		$data=$database->query("select distinct name from `k8s_userdb` where year = ".$year."")->fetchAll();
+		echo json_encode($data) ."\n";
+	}
 }
-?>
+/*
+foreach ($data as $value) {
+	    echo json_encode($value) ."\n";
+}*/
+//;
+
+?> 

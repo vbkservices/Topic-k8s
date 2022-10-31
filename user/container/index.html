@@ -26,92 +26,58 @@
         <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
         <!--中間版面-->
         <div class="center px-3">
-            <div class="bg-ligth py-4" style="height:15%;">
-                <div class="row">
-                    <div class="col-12"  id="center-logo">
+            <div class="bg-ligth py-4" style="height:10%;">
+                <div class="row  justify-content-center">
+                    <div class="col-12" id="center-logo">
                     </div>
-                    <div class="col-12 my-4">
-
+                    <div class="col-12 my-4" >
+                        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="http://120.114.142.17/sys/user/namespase/namespase.html">課程</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">查看課程</li>
+                            </ol>
+                          </nav>
                     </div>
                 </div>
             </div>
-            <div class="row imagestmux mt-sm-3 mt-4" style="height:85%;">
-                <div class="col-lg-9 border border-dark " id="xtream">
-                    <div>
-                        <h4><b>容器畫面展示處</b></h4>
+            <div class="row mx-1 mt-5">
+                <div class="card text-center px-0">
+                    <div class="card-header h4" id="images_user">
+                        title
                     </div>
-                </div>
-                <div class="col-3  d-sm-block d-none">
-                    <div class="row" style="height: 100%;">
-                        <div class="col-12" >
-                            <a class="btn btn-dark py-1 mx-2 html" href="images.html" value="master">映像檔</a>
-                            <a class="btn btn-dark py-1 mx-2 html" href="images_create.html" value="node1">製作映像檔</a>
-                            <a class="btn btn-dark py-1 mx-2 html" href="images_dow.html" value="node1">下載映像檔</a>
-                            
-                            <div class="accordion mt-4" id="accordionFlushExample">
-                              </div>
-                        </div>
+                    <div class="card-body px-2" id="example">
+                        <h5 class="card-title">未有老師部署的課程</h5>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="text-center modal-title"><b>建立容器</b></h1>
-
-            </div>
-            <div class="modal-body">
-                <div class="form-group row  my-2">
-                    <label for="contianer" class="col-sm-4 col-form-label">容器名</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="container_name" placeholder="contianer name">
+        <div class="modal fade" id="k8s_Modal" tabindex="-1" aria-labelledby="k8s_ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="k8s_ModalLabel"><b>映像檔下載中</b></h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="form-group row my-2">
-                    <label for="images" class="col-sm-4 col-form-label">選擇映像檔</label>
-                    <div class="col-sm-8 py-2">
-                        <select class="form-control form-control-sm" id="container_image">
-                            <option value="rockylinux" selected>預設(rockylinux)</option>
-                            <option value="rockylinux" >rockylinux</option>
-                            <option value="mysql">mysql</option>
-                            <option value="httpd">httpd</option>
-                        </select>
+                    <div class="modal-body">
+                        <table class="table mt-3" style="width:100%">
+                            <thead class="h6">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col" id="students">學號</th>
+                                    <th scope="col" id="add_th"></th>
+                                    <th scope="col" id="cont_status">選項</th>
+                                </tr>
+                            </thead>
+                            <tbody id="model_example">
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div id="httpifname">
-                    <div class="form-group row my-2">
-                        <label for="images" class="col-sm-4 col-form-label">容量</label>
-                        <div class="col-sm-2 py-2">
-                            <select class="form-control form-control-sm" id="container_volume">
-                                <option value="0.5">0.5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row my-2 ">
-                        <label for="cpu" class="col-sm-2 col-form-label">cpu</label>
-                        <div class="col-sm-4 py-2">
-                            <select class="form-control form-control-sm" id="container_cpu">
-                                <option value="0.5">0.5</option>
-                            </select>
-                        </div>
-                        <label for="memory" class="col-sm-2 col-form-label">memory</label>
-                        <div class="col-sm-4 py-2">
-                            <select class="form-control form-control-sm" id="container_memory">
-                                <option value="0.5">0.5</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div id="model_button">
-
                 </div>
             </div>
-          </div>
         </div>
-      </div>
 </body>
 
 </html>

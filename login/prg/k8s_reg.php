@@ -22,7 +22,7 @@ $count = $database->count("k8s_userdb", ["username" => "$username"]);
 $repassword = $database->count("k8s_userdb", ["password" => "$enpassword"]);
 if($count == 1 ){
 	if($repassword == 1){
-        array_push($date,true,"使用者登入"."student");
+        array_push($date,true,"使用者登入","student");
         echo json_encode($date);
 	}else{
 		array_push($date,false,"密碼錯誤");
@@ -32,7 +32,12 @@ if($count == 1 ){
     $count = $database->count("k8s_userdb", ["name" => "$username"]);
     if( $count == 1 ){
         if($repassword == 1){
-            array_push($date,true,"學號登入",);
+            $datas = $database->select("k8s_userdb", [
+                "remark"
+            ], [
+                "name" => "$username"
+            ]);
+            array_push($date,true,"學號登入",$datas[0]['remark']);
             echo json_encode($date);
         }else{
             array_push($date,false,"密碼錯誤");
