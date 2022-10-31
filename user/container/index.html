@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../../bootstarp/css/style.css">
+<script src="../../nav/users/nav.js"></script>
+<script src="./js/pod_namespase.js"></script>
+<body>
+    <div class="body bg-ligth">
+        <!--左引導列-->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav">
+                </div>
+            </div>
+        </div>
+        <!--左小圖標-->
+        <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
+        <!--中間版面-->
+        <div class="center px-3">
+            <div class="bg-ligth py-4" style="height:10%;">
+                <div class="row  justify-content-center">
+                    <div class="col-12" id="center-logo">
+                    </div>
+                    <div class="col-12 my-4" >
+                        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="http://120.114.142.17/sys/user/namespase/namespase.html">課程</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">查看課程</li>
+                            </ol>
+                          </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-1 mt-5">
+                <div class="card text-center px-0">
+                    <div class="card-header h4" id="images_user">
+                        title
+                    </div>
+                    <div class="card-body px-2" id="example">
+                        <h5 class="card-title">未有老師部署的課程</h5>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="k8s_Modal" tabindex="-1" aria-labelledby="k8s_ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="k8s_ModalLabel"><b>映像檔下載中</b></h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table mt-3" style="width:100%">
+                            <thead class="h6">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col" id="students">學號</th>
+                                    <th scope="col" id="add_th"></th>
+                                    <th scope="col" id="cont_status">選項</th>
+                                </tr>
+                            </thead>
+                            <tbody id="model_example">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

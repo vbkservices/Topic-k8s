@@ -7,7 +7,7 @@ $apikey = $_POST["apikey"];
 $key="dic@ksu!2050014&";
 $enapikey=openssl_decrypt($apikey,'des-cbc',$key);
 if($enapikey == "2727175#356"){
-    $output = shell_exec("sudo /shell/images_status.sh");
+    $output = shell_exec("sudo /shell/images_status.sh  2> /dev/null");
     echo $output;
 }
 ?>
