@@ -4,7 +4,7 @@ require '../../../prg/vendor/autoload.php';
 use Medoo\Medoo;
 $status=$_POST["status"];
 $apikey = $_POST["apikey"];
-$year=$_POST["year"];
+$value=$_POST["value"];
 $database = new Medoo([	
 	'type' => 'mysql',
 	'host' => 'localhost',
@@ -24,9 +24,27 @@ if($enapikey == "2727175#356"){
 		echo json_encode($data) ."\n";
 	}
 
-	if($status== "student"){
-		$data=$database->query("select distinct name from `k8s_userdb` where year = ".$year."")->fetchAll();
+	if($status== "select"){
+		$data=$database->query("select distinct username from `k8s_userdb` where year = ".$value."")->fetchAll();
 		echo json_encode($data) ."\n";
+	}
+
+	if($status== "value"){
+		$username_count = $database->count("k8s_userdb", ["username" => "$value"]);
+		if($username_count=="1"){
+			$data_user = $database->select("k8s_userdb", [
+				"username",
+				"remark",
+				"year",
+			], [
+				"username" => "$value"
+			]);
+			array_push($date,true,$data_user);
+		}else{
+			array_push($date,false);
+		}
+
+		echo json_encode($date) ."\n";
 	}
 }
 /*

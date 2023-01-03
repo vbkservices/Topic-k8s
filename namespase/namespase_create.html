@@ -2,15 +2,15 @@
 <title>管理者介面</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="../bootstarp/js/jquery.min.js"></script>
+<script src="../../bootstarp/js/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="../bootstarp/node_modules/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="../bootstarp/node_modules/jquery.dataTables.min.css">
-<link href="../bootstarp/css/bootstrap.css" rel="stylesheet">
-<script src="../bootstarp/js/bootstrap.bundle.min.js"></script>
+<script src="../../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../../bootstarp/js/bootstrap.bundle.min.js"></script>
 
-<link rel="stylesheet" href="../bootstarp/css/style.css">
-<script src="../nav/nav.js"></script>
+<link rel="stylesheet" href="../../bootstarp/css/style.css">
+<script src="../../nav/users/nav.js"></script>
 <script src="./js/namespase_create.js"></script>
 <style>
 </style>
@@ -26,34 +26,113 @@
         <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
 
         <div class="center px-3">
-            <div class="bg-ligth py-4">
-                <div class="row">
+            <div class="bg-ligth pt-4">
+                <div class="row  justify-content-center">
                     <div class="col-12" id="center-logo">
                     </div>
                     <div class="col-12 mt-4" >
-                        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="http://120.114.142.17/sys/namespase/namespase.html">課程</a></li>
-                              <li class="breadcrumb-item " aria-current="page">查看課程</li>
-                              <li class="breadcrumb-item active" aria-current="page">建立課程</li>
+                        <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+                            <ol class="breadcrumb fs-5">
+                                <li class="breadcrumb-item mx-2">
+                                   <a href="http://dic-con.vbfaka.com/sys/user/namespase/namespase.html"><i class="fa fa-search px-1"></i>查看課程</a></li>
+                                <li class="breadcrumb-item"><a 
+                                        href="http://dic-con.vbfaka.com/sys/user/namespase/namespase_create.html"><i class="fa fa-plus-square-o px-1"></i>建立課程</a></li>
                             </ol>
-                          </nav>
+                        </nav>
                     </div>
                 </div>
             </div>
             <div class="row mt-xl-2 mt-5">
-                <div class="left-sm col-2">
-                </div>
-                <div class="col-10">
+                <div class="col-7">
                     <div class="card text-center">
-                        <div class="card-header">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-outline-secondary"><b>建立課程</b></button>
-                                <a type="button" class="btn btn-outline-secondary" href="http://120.114.142.17/sys/namespase/namespase.html">上一頁</a>
-                              </div>
+                        <div class="card-header fs-5">
+                            <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item px-3"><a
+                                     href="http://dic-con.vbfaka.com/sys/user/namespase/namespase.html">
+                                     <i class="fa fa-arrow-left"></i><b>上一頁</b></a></li>
+                                </ol>
+                                </nav>
                         </div>
                         <div class="card-body">
                             <div class="form-group row my-2">
+                                <label for="course" class="col-sm-2 col-form-label">課程名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="namepase_name" placeholder="課程名稱">
+                                    <div class="invalid-feedback text-start invalid-feedback-login">
+                                        錯誤: 請輸入課程名
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row my-2">
+                                <label for="course" class="col-sm-2 col-form-label">學生</label>
+                                <div class="col-sm-7 text-start">
+                                    <button type="button" class="btn btn-primary my-1" onclick="add_namespace_students()">新增</button>
+                                </div>
+                                <!--div class="col-sm-8 text-start">
+                                    <div class="row"  id="add_students_set">
+                                    </div>
+                                </div-->
+                            </div>
+
+                            
+                            <!--div class="form-group row my-2" >
+                                <label for="course" class="col-sm-2 col-form-label" ></label>
+                                <div class="col-sm-9 text-start row " id="add_students" >
+                                 
+                                </div>
+                            </div-->
+                            
+                            <div class="form-group row my-2">
+                                <label for="course" class="col-sm-2 col-form-label">映像檔</label>
+                                <div class="col-sm-7 text-start">
+                                    <button type="button" class="btn btn-primary my-1" onclick="add_namespace_images()">新增</button>
+                                </div>
+                                <!--div class="col-sm-8 text-start">
+                                    <div class="row"  id="add_students_set">
+                                    </div>
+                                </div-->
+                            </div>
+
+                            <!--div class="form-group row my-2" >
+                                <label for="course" class="col-sm-2 col-form-label " id="option_value_header"></label>
+                                <div class="col-sm-9 text-start overflow-auto" id="option_value" >
+                                 
+                                </div>
+                            </div-->
+
+                            <div class="form-group row my-2">
+                                <label for="course" class="col-sm-2 col-form-label">是否立即開放</label>
+                                <div class="col-sm-2 pt-2 text-start">
+                                    <input type="radio" name="sex" onclick="time('yes')" value="yes" checked>是
+                                    <input type="radio" name="sex" onclick="time('no')" value="no">否<p>
+                                </div>
+                            </div>
+
+                            <!--div class="form-group row my-2" id="timeadd">
+                            </div-->
+                        </div>
+                        <div class="card-footer text-muted">
+                            <div class="row">
+                                <div class="col-12" id="new_container">
+                                  
+                                </div>
+                                <div class="col-12"  id="new_button">
+                                    <!--button type="button" class="btn btn-primary my-1" id="create_container" onclick="create_container('true')">需同時部署容器</button-->
+                                    <button type="button" class="btn btn-primary my-1" id="create_namespase" onclick="new_namespase()">直接建立</button>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    
+                </div>
+                <div class="col-5">
+                    <div class="card text-center">
+                        <div class="card-body" style="min-height: 568px;">
+                            <table class="table fs-5">
+                              </table>
+                            <!--div class="form-group row my-2">
                                 <label for="course" class="col-sm-2 col-form-label">課程名</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="namepase_name" placeholder="course">
@@ -62,43 +141,45 @@
 
                             <div class="form-group row my-2">
                                 <label for="course" class="col-sm-2 col-form-label">學生</label>
-                                <div class="col-sm-10 text-start">
-                                    <button type="submit" class="btn btn-primary my-1" onclick="add_students()">新增</button>
-                                    <!--textarea class="md-textarea form-control" id="namepase_student"
-                                        placeholder="將上課的學生寫入(範例:4080XXXX 4080XXXX 4080XXX)"></textarea-->
+                                <div class="col-sm-1 text-start">
+                                    <button type="button" class="btn btn-primary my-1" onclick="add_students()">新增</button>
+                                </div>
+                                <div class="col-sm-8 text-start">
+                                    <div class="row"  id="add_students_set">
+                                    </div>
                                 </div>
                             </div>
 
+                            
+                            <div class="form-group row my-2" >
+                                <label for="course" class="col-sm-2 col-form-label" ></label>
+                                <div class="col-sm-9 text-start row " id="add_students" style="min-height:50px;max-height:50px">
+                                 
+                                </div>
+                            </div>
+                            
                             <div class="form-group row my-2 imagestatus" id="imagestatus">
 
                             </div>
 
-                            <div class="form-group row my-2" id="option_value">
-
+                            <div class="form-group row my-2" >
+                                <label for="course" class="col-sm-2 col-form-label " id="option_value_header"></label>
+                                <div class="col-sm-9 text-start overflow-auto" id="option_value" style="min-height:100px;max-height:100px">
+                                 
+                                </div>
                             </div>
 
 
                             <div class="form-group row my-2">
                                 <label for="course" class="col-sm-2 col-form-label">是否立即開放</label>
-                                <div class="col-sm-2 pt-2">
+                                <div class="col-sm-2 pt-2 text-start">
                                     <input type="radio" name="sex" onclick="time('yes')" value="yes">是
                                     <input type="radio" name="sex" onclick="time('no')" value="no">否<p>
                                 </div>
                             </div>
 
                             <div class="form-group row my-2" id="timeadd">
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <div class="row">
-                                <div class="col-12" id="new_container">
-                                  
-                                </div>
-                                <div class="col-12"  id="new_button">
-                                    <button type="submit" class="btn btn-primary my-1" id="create_container" onclick="create_container('true')">需同時部署容器</button>
-                                    <button type="submit" class="btn btn-primary my-1" id="create_namespase" onclick="new_namespase()">直接建立</button>
-                                </div>
-                            </div>
+                            </div-->
                         </div>
                       </div>
                     

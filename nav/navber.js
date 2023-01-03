@@ -21,14 +21,14 @@ $(function () {
     web = web + '<li class="list-group-item"><a class="btn btn-dark " href="webtty_status.html">連線狀況</a></li>';
     $('#webconntion').html(web)
   
-    $('.nav5').text('映像檔')
+    $('.nav5').text('下載硬碟')
     var nodes = '<ul class="list-group list-group-flush">';
     nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="teacher_pod.html">教師容器</a></li>';
     nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="student_pod.html">學生容器</a></li>';
     nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1">特權容器</a></li>';
     $('#pod').html(nodes)
 
-    $('.nav6').text('容器')
+    $('.nav6').text('身分更改')
     var nodes = '<ul class="list-group list-group-flush">';
     nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="teacher_pod.html">教師容器</a></li>';
     nodes = nodes + '<li class="list-group-item"><a class="btn btn-dark py-1" href="student_pod.html">學生容器</a></li>';
@@ -37,5 +37,5 @@ $(function () {
     //$('.left-sm').html(li)
 
 
-    $('.nav7').text('系統')
+    $('.nav7').text('登出')
 });

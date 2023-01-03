@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../bootstarp/css/style.css">
+<script src="../nav/nav.js"></script>
+<script src="../nav/navber.js"></script>
+<script src="./kube_person.js"></script>
+<body>
+    <div class="body bg-ligth">
+        <!--左引導列-->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav">
+                </div>
+            </div>
+        </div>
+        <!--左小圖標-->
+        <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
+        <!--中間版面-->
+        <div class="center px-3">
+            <div class="bg-ligth pt-4">
+                <div class="row  justify-content-center">
+                    <div class="col-12" id="center-logo">
+                    </div>
+                    <div class="col-12">
+                        <div class="text-dark fs-3 bg-secondary text-white text-center my-2"><b>查看系統使用者</b></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-1">
+                <table class="table table-striped fs-5">
+                    <thead>
+                      <tr>
+                        <th scope="col">用戶名</th>
+                        <th scope="col">學號</th>
+                        <th scope="col">身分</th>
+                        <th scope="col">電子郵件</th>
+                        <th scope="col">學年</th>
+                        <th scope="col">註冊時間</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody id="user_status">
+
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal"data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" style="height: 70vh;">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="card">
+                        <h5 class="card-header"><b>帳號</b></h5>
+                        <div class="card-body px-0">
+                            <form class="needs-validation px-2" novalidate>
+                                <div class="form-row">
+                                    <div class="form-group row">
+                                        <label for="k8s_user" class="col-sm-2 col-form-label"><b>學號</b></label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="k8s_user"
+                                                pattern="^[A-Z0-9]{8,}$" disabled>
+                                        </div>
+                                        <div class="invalid-feedback text-start">
+                                            格式錯誤
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="k8s_passwd" class="col-sm-2 col-form-label"><b>修改密碼</b></label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="k8s_passwd"
+                                                pattern="^[a-zA-Z0-9]{6,}$" required>
+                                        </div>
+                                        <div class="invalid-feedback text-start">
+                                            格式錯誤
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="k8s_repasswd"
+                                            class="col-sm-2 col-form-label"><b>確認密碼</b></label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="k8s_repasswd"
+                                                pattern="^[a-zA-Z0-9]{6,}$" required>
+                                        </div>
+                                        <div class="invalid-feedback text-start" id="error_k8s_repasswd">
+                                            格式錯誤
+                                        </div>
+                                    </div>
+
+                                    <h5 class="card-header m-0"><b>個人資料</b></h5>
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group row">
+                                                <label for="k8s_name" class="col-sm-2 col-form-label"><b>真實姓名</b></label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="k8s_name"
+                                                        pattern="^[\u4e00-\u9fa5a-zA-Z]{3,}$" required>
+                                                </div>
+                                                <div class="invalid-feedback text-start">
+                                                    格式錯誤
+                                                </div>
+                                            </div>
+        
+                                            <div class="form-group row">
+                                                <label for="k8s_years" class="col-sm-2 col-form-label"><b>學年</b></label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control col-form-label-lg form-select" id="k8s_years" required>
+                                                    </select>
+                                                </div>
+                                                <div class="invalid-feedback text-start">
+                                                    格式錯誤
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="k8s_status" class="col-sm-2 col-form-label"><b>身分</b></label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="k8s_status" disabled>
+                                                </div>
+                                                <div class="invalid-feedback text-start">
+                                                    格式錯誤
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="k8s_mail" class="col-sm-2 col-form-label"><b>電子郵件</b></label>
+                                                <div class="col-sm-10">
+                                                    <input type="email" class="form-control" id="k8s_mail" required>
+                                                </div>
+                                                <div class="invalid-feedback text-start">
+                                                    格式錯誤
+                                                </div>
+                                            </div>
+        
+                                            <div class="form-group row">
+                                                <label for="k8s_reg" class="col-sm-2 col-form-label"><b>註冊日期</b></label>
+                                                <div class="col-sm-10 text-start" id="k8s_reg">
+                                                    
+                                                </div>
+                                                <div class="invalid-feedback text-start">
+                                                    格式錯誤
+                                                </div>
+                                            </div>
+        
+                                            <div class="form-group row ">
+                                                <label for="k8s_login" class="col-sm-2 col-form-label"><b>最近登入</b></label>
+                                                <div class="col-sm-10 text-start" id="k8s_login">
+                                                    
+                                                </div>
+                                                <div class="invalid-feedback text-start">
+                                                    格式錯誤
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary mx-2" >確認送出</button>
+                </div>
+              </div>
+            </div>
+          </div>
+</body>
+
+</html>

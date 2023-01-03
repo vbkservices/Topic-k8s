@@ -7,18 +7,18 @@ window.onload = function () {
     document.querySelector('#images_user').innerHTML = `
     <div class="btn-group" role="group" aria-label="Basic example">
     <button type="button" class="btn btn-outline-dark disabled" ><b>課程:` + pod + `</b></button>
-    <a type="button" class="btn btn-outline-secondary" href="http://120.114.142.17/sys/user/namespase/namespase.html"><b>上一頁</b></a>
+    <a type="button" class="btn btn-outline-secondary" href="http://dic-con.vbfaka.com/sys/user/namespase/namespase.html"><b>上一頁</b></a>
   </div>`;
-    namespase_status(pod);
+    images_status(pod);
     student_status(pod);
     status(pod);
 }
 /*<button  type="button" class="btn btn-success"  onclick="status_pod('${value.metadata.name}')"></button>*/
-function namespase_status(namepase) {
+function images_status(namepase) {
     fddjs.append('namepase', namepase);
     $.ajax({ //kubectll get pods
         type: "post",
-        url: 'http://120.114.142.17/sys/user/namespase/prg/kube_namespase.php',
+        url: 'http://dic-con.vbfaka.com/sys/user/namespase/prg/kube_namespase.php',
         dataType: "json",
         data: fddjs,
         processData: false,
@@ -27,9 +27,11 @@ function namespase_status(namepase) {
         success: function (result, status) {
             let demo = JSON.parse(result);
             let table = '';
+            let namespace_table = '';
             if (`${demo.metadata.name}` == namepase) {
                 document.getElementById('k8s_ModalLabel').innerText = "映像檔";
                 // console.log(value.metadata.labels);
+                console.log(result)
                 Object.entries(demo.metadata.labels).forEach(([rekey, revalue]) => {
                     valstr = rekey.indexOf("docker");
                     if (valstr !== -1) {
@@ -48,10 +50,18 @@ function namespase_status(namepase) {
 
                     }
                 });
+                Object.entries(demo.metadata).forEach(([rekeys, revalues]) => {
+                        namespace_table=namespace_table+`
+                        <tr>
+                        <th scope="row">`+rekeys+`</th>
+                        <td>`+revalues+`</td>
+                      </tr>`;
+                });
                 table = table + (`<tr class="h6" id="studnet_add_table"><th scope="row"></th><td id="status_add">
                     </td><td><button type="submit" class="btn btn-success my-1 mx-3 fa fa-plus-square" id="create_container" onclick="status_add('` + namepase + `')"></button></td></tr>`);
             }
-            $('#example').html(table);
+            $('#namespase_tables').html(namespace_table);
+            $('#v-pills-imges').html(table);
         }
     });
 }
@@ -73,7 +83,7 @@ function status_set(images_user) {
     fddjs.append('name', images_user);
     $.ajax({ //kubectll get pods
         type: "post",
-        url: 'http://120.114.142.17/sys/user/images/prg/images_status.php',
+        url: 'http://dic-con.vbfaka.com/sys/user/images/prg/images_status.php',
         data: fddjs,
         //  dataType: "json",
         processData: false,
@@ -103,7 +113,7 @@ function student_status(namepase) {
     fddjs.append('namepase', namepase);
     $.ajax({ //kubectll get pods
         type: "post",
-        url: 'http://120.114.142.17/sys/user/namespase/prg/kube_namespase.php',
+        url: 'http://dic-con.vbfaka.com/sys/user/namespase/prg/kube_namespase.php',
         dataType: "json",
         data: fddjs,
         processData: false,
@@ -128,7 +138,7 @@ function student_status(namepase) {
                 add_table = (`<tr class="h4" id="studnet_add_table"><th scope="row"></th><td id="student_add">
                     </td><td><button type="submit" class="btn btn-success my-1" id="create_container" onclick="student_add('` + namepase + `','studnets')">新增學生們</button></td></tr>`);
             }
-            $('#example1').html(table);
+            $('#v-pills-student').html(table);
             $('#add_students').html(add_table);
         }
     });
@@ -154,7 +164,7 @@ function status(namepase) {
     fddjs.append('namepase', namepase);
     $.ajax({ //kubectll get pods
         type: "post",
-        url: 'http://120.114.142.17/sys/user/namespase/prg/kube_namespase.php',
+        url: 'http://dic-con.vbfaka.com/sys/user/namespase/prg/kube_namespase.php',
         dataType: "json",
         data: fddjs,
         processData: false,
@@ -195,14 +205,14 @@ function status_remove(namepase, images) {
     </th>`
     $.ajax({ //kubectll get pods
         type: "post",
-        url: 'http://120.114.142.17/sys/user/namespase/prg/kube_ns_delete.php',
+        url: 'http://dic-con.vbfaka.com/sys/user/namespase/prg/kube_ns_delete.php',
         //dataType: "json",
         data: fddjs,
         processData: false,
         //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
         contentType: false,
         success: function (result, status) {
-            namespase_status(namepase);
+            images_status(namepase);
         }
     });
 }
@@ -211,7 +221,7 @@ function student_add() {
     fddjs.append('status', 'status');
     $.ajax({ //kubectll get pods
         type: "post",
-        url: 'http://120.114.142.17/sys/user/namespase/prg/kube_add_student.php',
+        url: 'http://dic-con.vbfaka.com/sys/user/namespase/prg/kube_add_student.php',
         // dataType: "json",
         data: fddjs,
         processData: false,
@@ -240,7 +250,7 @@ function student_add_new() {
             let textValues = $(this).children('button').map(function () {
                 return $(this).text();
             }).get();
-            console.log(values);
+          //  console.log(values);
             //    console.log(textValues[0].replace(/\s*/g,""));
 
             if (textValues[0].replace(/\s*/g, "") != values) {
@@ -253,7 +263,7 @@ function student_add_new() {
 
         $.ajax({ //kubectll get pods
             type: "post",
-            url: 'http://120.114.142.17/sys/user/namespase/prg/kube_add_student.php',
+            url: 'http://dic-con.vbfaka.com/sys/user/namespase/prg/kube_add_student.php',
             data: fddjs,
             //  dataType: "json",
             processData: false,
@@ -314,14 +324,14 @@ function images_dropdown_status(namepase) {
         </th>`
         $.ajax({ //kubectll get pods
             type: "post",
-            url: 'http://120.114.142.17/sys/user/namespase/prg/kube_add_images.php',
+            url: 'http://dic-con.vbfaka.com/sys/user/namespase/prg/kube_add_images.php',
             //dataType: "json",
             data: fddjs,
             processData: false,
             //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
             contentType: false,
             success: function (result, status) {
-                namespase_status(namepase);
+                images_status(namepase);
             }
         });
     }
@@ -333,14 +343,14 @@ function status_switch(namepase,images_name,status) {
     fddjs.append('status_images', status);
     $.ajax({ //kubectll get pods
         type: "post",
-        url: 'http://120.114.142.17/sys/user/namespase/prg/kube_add_images.php',
+        url: 'http://dic-con.vbfaka.com/sys/user/namespase/prg/kube_add_images.php',
         //dataType: "json",
         data: fddjs,
         processData: false,
         //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
         contentType: false,
         success: function (result, status) {
-            namespase_status(namepase);
+            images_status(namepase);
         }
     });
 }
@@ -352,7 +362,7 @@ function nsdelete(namepase) {
 
     $.ajax({ //kubectll get pods
         type: "post",
-        url: 'http://120.114.142.17/sys/user/namespase/prg/kube_ns_delete.php',
+        url: 'http://dic-con.vbfaka.com/sys/user/namespase/prg/kube_ns_delete.php',
         //dataType: "json",
         data: fdelete,
         processData: false,
@@ -365,5 +375,5 @@ function nsdelete(namepase) {
 }
 function status_pod(namepase) {
     sessionStorage.setItem("status_pod", namepase);
-    window.location = "http://120.114.142.17/sys//user/namespase/namespase_container.html"
+    window.location = "http://dic-con.vbfaka.com/sys//user/namespase/namespase_container.html"
 }

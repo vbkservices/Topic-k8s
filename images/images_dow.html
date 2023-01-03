@@ -28,26 +28,34 @@
         <div class="left-sm h4 px-3 pt-3" id="nav-sm"></div>
         <!--中間版面-->
         <div class="center px-3">
-            <div class="bg-ligth py-4" style="height:15%;">
-                <div class="row">
+            <div class="bg-ligth py-0" >
+                <div class="row my-3">
+                    <from>
                     <div class="col-12" id="center-logo">
                     </div>
-                    <div class="col-12 my-4">
-                        <a class="btn btn-dark py-1 mx-2 html" href="images.html" value="master">映像檔</a>
-                        <a class="btn btn-dark py-1 mx-2 html" href="images_create.html" value="node1">製作映像檔</a>
+                    <div class="col-12 mt-3">
                         <a class="btn btn-dark py-1 mx-2 html" href="images_dow.html" value="node1">下載映像檔</a>
                     </div>
+                    </from>
                 </div>
             </div>
             <div class="row">
-                <div class="col-10">
-                    <div class="row position-relative fs-4">
-                        <div class="col-7 my-2">
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                                aria-describedby="basic-addon1" id="searchimages">
-                            <a class="btn btn-dark py-1 mx-2  my-2 search">查詢</a>
+                <div class="col-12">
+                    <div class="row position-relative fs-4 h-100">
+                        <div class="col-7 my-2 row">
+                            <form>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                    aria-describedby="basic-addon1" id="searchimages"><button type="submit" class="btn btn-dark  py-1 mx-2  my-2 search">查詢</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="col-6 my-2">
+                            <div class="h3 text-start">
+                                <b>
+                                docker hub
+                                </b>
+                            </div>
                             <table class="table">
                                 <thead class="text-muted">
                                     <tr>
@@ -56,16 +64,23 @@
                                     </tr>
                                 </thead>
                                 </thead>
-                                <tbody id="imglist">
+                                
+                                <tbody>
                                     <tr>
-                                        <th colspan="6" class="text-center">
-
-                                        </th>
-                                    </tr>
+                                        <th scope="row"
+                                        ><input type="text" class="form-control" id="images_name"></th><td><button  class="btn btn-secondary download" onclick='download("download")' >下載</button>
+                                    </td>
+                                </tbody>
+                                <tbody id="imglist">
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-6 my-2">
+                        <div class="col-6 my-2 ">
+                            <div class="h3 text-start">
+                                <b>
+                                本地倉庫
+                                </b>
+                            </div>
                             <table class="table">
                                 <thead class="text-muted">
                                     <tr>

@@ -20,28 +20,20 @@ if($enapikey == "2727175#356"){
     $result = json_decode($output, true);
     $array=array();
     if($result['metadata']['labels']['user']==$user){
-        /*
-        if($result['metadata']['labels']['see.teacher']==NULL){
-
-        }else{
-            $optnet=shell_exec('/shell/namespase/create_gotty_see_container.sh '.$name.' '.$pod_name.' '.$namepase.' '.$image.' '.$clientip.' '.$port.' '.$user.' '.$see_port.'');
-         //   shell_exec('echo "123"> /shell/error.log');
-            array_push($array,$result['metadata']['labels']['user']."_"."$namepase"."_".$result['metadata']['labels']['see.teacher'],$result['metadata']['labels']['seeport']);
-           // array_push($array,$result['metadata']['labels']['user'],$user);
-        }*/
         if($status=="create"){
             $optnet=shell_exec('/shell/namespase/create_gotty_container.sh '.$name.' '.$pod_name.' '.$namepase.' '.$image.' '.$clientip.' '.$port.'');
+            shell_exec('export TERM=xterm;tmux new -s close_'.$port.' -d /bin/bash -c "sleep 10s && sudo /sbin/iptables -D INPUT -p tcp -s '.$clientip.' -m tcp --dport '.$port.' -j ACCEPT"');
             array_push($array,$optnet,$port);
         }else if($status=="see"){
             $optnet=shell_exec('/shell/namespase/create_gotty_see_container.sh '.$name.' '.$pod_name.' '.$namepase.' '.$image.' '.$clientip.' '.$port.' '.$user.' '.$see_port.'');
             array_push($array,$optnet,$result['metadata']['labels']['seeport']);
         }
         echo json_encode($array);
-        shell_exec('export TERM=xterm;tmux new -s close_'.$port.' -d /bin/bash -c "sleep 10s && sudo /sbin/iptables -D INPUT -p tcp -s '.$clientip.' -m tcp --dport '.$port.' -j ACCEPT"');
     }else{
         if($result['metadata']['labels']['see.teacher']==NULL){
             if($status=="create"){
                 $optnet=shell_exec('/shell/namespase/create_gotty_container.sh '.$name.' '.$pod_name.' '.$namepase.' '.$image.' '.$clientip.' '.$port.'');
+                shell_exec('export TERM=xterm;tmux new -s close_'.$port.' -d /bin/bash -c "sleep 10s && sudo /sbin/iptables -D INPUT -p tcp -s '.$clientip.' -m tcp --dport '.$port.' -j ACCEPT"');
                 array_push($array,$optnet,$port);
             }else if($status=="see"){
                 $optnet=shell_exec('/shell/namespase/create_gotty_see_container.sh '.$name.' '.$pod_name.' '.$namepase.' '.$image.' '.$clientip.' '.$port.' '.$user.' '.$see_port.'');
@@ -50,12 +42,12 @@ if($enapikey == "2727175#356"){
             echo json_encode($array);
         }else{
             $optnet=shell_exec('/shell/namespase/create_gotty_see_container.sh '.$name.' '.$pod_name.' '.$namepase.' '.$image.' '.$clientip.' '.$port.' '.$user.' '.$see_port.'');
-         //   shell_exec('echo "123"> /shell/error.log');
+            shell_exec('export TERM=xterm;tmux new -s close_'.$see_port.' -d /bin/bash -c "sleep 10s && sudo /sbin/iptables -D INPUT -p tcp -s '.$clientip.' -m tcp --dport '.$see_port.' -j ACCEPT"');
             array_push($array,$result['metadata']['labels']['user']."_"."$namepase"."_".$result['metadata']['labels']['see.teacher'],$result['metadata']['labels']['seeport']);
-           // array_push($array,$result['metadata']['labels']['user'],$user);
             echo json_encode($array);
         }
-        shell_exec('export TERM=xterm;tmux new -s close_'.$port.' -d /bin/bash -c "sleep 10s && sudo /sbin/iptables -D INPUT -p tcp -s '.$clientip.' -m tcp --dport '.$port.' -j ACCEPT"');
+
+       
     }
 }
 ?>

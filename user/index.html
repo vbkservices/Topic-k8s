@@ -31,44 +31,21 @@
                     </div>
                 </div>
             </div>
-            <div class="row mx-1 px-sm-5">
-                <div class="col-xl-3 col-lg-5 mx-2 col-sm-8 mb-sm-2">
-                    <div class="card text-center rounded-3 shadow" style="width: 100%;">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <h2 class="card-title"><i class="fa fa-sitemap  fs-1 mx-3"></i><b>集群</b></h2>
-                                    <p class="card-text my-3 fs-6">主要由三台實體電腦組由的kubernetes集群
-                                        </br>能各自看到三台的cpu、記憶體及硬碟空間
-                                        </br>也能觀察kubernetes集群內的容器數量</p>
-                                </li>
-                                <li class="list-group-item">
-                                    <ol class="breadcrumb fs-4 ">
-                                        <li class="breadcrumb-item">master</li>
-                                        <li class="breadcrumb-item">node1</li>
-                                        <li class="breadcrumb-item ">node2</li>
-                                    </ol>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div class="row mx-1 px-sm-5" id="append_namespace">
                 <div class="col-xl-3 mx-2 col-lg-5 col-sm-8 mb-sm-2">
                     <div class="card text-center rounded-3 shadow" style="width: 100%;">
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <h2 class="card-title"><i class="fa fa-graduation-cap fs-1 mx-3"></i><b>課程</b></h2>
+                                    <h2 class="card-title"><i class="fa fa-book  fs-1 mx-3"></i><b>課程</b></h2>
                                     <p class="card-text my-3 fs-6">主要是使用kubernetes namespase來部署課程
-                                        </br>是使用namespase將容量規劃在一個特定的空間
-                                        </br>由教師進行建立課程以在內建立容器給學生操作</p>
+                                        <!--/br>是使用namespase將容量規劃在一個特定的空間
+                                        </br>由教師進行建立課程以在內建立容器給學生操作</p-->
                                 </li>
                                 <li class="list-group-item">
                                     <b>
-                                        <ol class="breadcrumb fs-5 ">
-                                            <li class="breadcrumb-item">查看課程</li>
-                                            <li class="breadcrumb-item">部屬課程</li>
-                                            <li class="breadcrumb-item ">刪除課程</li>
+                                        <ol class="breadcrumb fs-4 justify-content-center">
+                                            <li class="breadcrumb-item"><a href="http://dic-con.vbfaka.com/sys/user/namespase/namespase.html" class="text-dark">查看課程</a></li>                               
                                         </ol>
                                     </b>
                                 </li>
@@ -81,41 +58,16 @@
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <h2 class="card-title"><i class="fa fa-window-maximize fs-1 mx-3"></i><b>連線</b></h2>
-                                    <p class="card-text my-3 fs-6">是使用tmux來進行連線終端管理
-                                        </br>主要能將目前的畫面進度進行保留方便使用者
+                                    <h2 class="card-title"><i class="fa fa-drivers-license-o fs-1 mx-3"></i><b>個人</b></h2>
+                                    <p class="card-text my-3 fs-6">查看個人資料
+                                        <!--/br>主要能將目前的畫面進度進行保留方便使用者
                                         </br>接來下能在對上次的進度進行修改
-                                        </br>也有讓使用者來分享畫面給其他人觀看</p>
+                                        </br>也有讓使用者來分享畫面給其他人觀看</p-->
                                 </li>
                                 <li class="list-group-item">
                                     <b>
-                                        <ol class="breadcrumb fs-5">
-                                            <li class="breadcrumb-item">連線畫面</li>
-                                            <li class="breadcrumb-item">連線操作</li>
-                                        </ol>
-                                    </b>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-5 col-sm-8 mx-2 mb-sm-2">
-                    <div class="card text-center rounded-3 shadow" style="width: 100%;">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <h2 class="card-title"><i class="fa fa-cubes  fs-1 mx-3"></i><b>容器</b></h2>
-                                    <p class="card-text my-3 fs-6">是管理者能查看各容器的運行狀況
-                                        </br>管理者也能依使用者需求將容器進行資源管理
-                                        </br>教師也對容器環境進行調整
-                                        </br>也能將處理完的環境進行部屬給學生操作</p>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>
-                                        <ol class="breadcrumb fs-5 ">
-                                            <li class="breadcrumb-item">容器狀態</li>
-                                            <li class="breadcrumb-item">容器環境</li>
-                                            <li class="breadcrumb-item ">容器資源</li>
+                                        <ol class="breadcrumb fs-4  justify-content-center">
+                                            <li class="breadcrumb-item"><a href="http://dic-con.vbfaka.com/sys/login/user_status.html" class="text-dark">修改個人資料</a></li>
                                         </ol>
                                     </b>
                                 </li>

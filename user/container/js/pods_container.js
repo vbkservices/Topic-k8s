@@ -162,9 +162,9 @@ function namespace_pod(see_port,see_teacher) {
         let container_image = document.getElementById('namepace_images_status').value;
         container_image = container_image.replace(/\./g, ":");
         //console.log(container_image)
-        let container_volume = document.getElementById('container_volume').value;
-        let container_cpu = document.getElementById('container_cpu').value;
-        let container_memory = document.getElementById('container_memory').value;
+        let container_volume = "1";
+        let container_cpu = "1";
+        let container_memory = "1";
         fddjs.append('name', name);
         fddjs.append('namepase_name', namepase);
         fddjs.append('container_name', container_name);
@@ -194,6 +194,7 @@ function namespace_pod(see_port,see_teacher) {
         fddjs.append('namepase', namepase);
         fddjs.append('image', image);
         fddjs.append('port', port);
+        fddjs.append('see_port', see_port);
         fddjs.append('status', 'create');
         $.ajax({ //kubectll get pods
             type: "post",
@@ -205,7 +206,7 @@ function namespace_pod(see_port,see_teacher) {
             contentType: false,
             success: function (result, status) {
                 let str=JSON.parse(result)
-              //  console.log(str);
+                console.log(str);
               if(str[0]==null){
                 window.open("http://120.114.142.17:"+str[1]+"", '_blank', 'location=yes,height=1080,width=1920,scrollbars=yes,status=yes');
               }else{

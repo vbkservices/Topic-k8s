@@ -2,18 +2,24 @@ var fddjs = new FormData();
 fddjs.append('apikey', 'kqzt+7MNF0nJFf+3uB8tRw==');
 var student = localStorage.getItem('student');
 $(document).ready(function(){
+  download_status()
   $(".search").click(function(){
+     event.preventDefault();
+     $('#imglist').html(`<tr><th scope="row" class="text-center" colspan="2"><div class="spinner-border" role="status">
+     <span class="visually-hidden">Loading...</span>
+   </div></th></tr>`);
+    /*
     $('#exampleModal').modal('show');
     document.querySelector('#exampleModalLabel').innerHTML = "系統訊息";
-    document.querySelector('.modal-body').innerHTML = "加載中";
+    document.querySelector('.modal-body').innerHTML = "加載中";*/
     var fddjs = new FormData();
     var obj=$('#searchimages').val()
     fddjs.append('apikey', 'kqzt+7MNF0nJFf+3uB8tRw==');
     fddjs.append('objost', obj);
-    fddjs.append('down', 'false');
+    fddjs.append('status', 'search');
     $.ajax({ //kubectll get pods
       type: "post",
-      url: 'http://120.114.142.17/sys/images/prg/images_dow.php',
+      url: 'http://dic-con.vbfaka.com/sys/images/prg/images_dow.php',
       data: fddjs,
     //  dataType: "json",
       processData: false,
@@ -21,12 +27,16 @@ $(document).ready(function(){
       contentType: false,
       success: function (result, status) {
         //  console.log(JSON.parse(result));
-          $('#exampleModal').modal('hide');
-          var table="";
+       /*   $('#exampleModal').modal('hide');*/
+          var table=``;
           var imageslist = JSON.parse(result);
           Object.entries(imageslist).forEach(([key, value]) => {
-            if(`${value}` != 'NAME'){
-              table = table +`<tr><th scope="row" ">`+`${value}`+`</th><td><button type="button" class="btn btn-secondary download" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick='download(\"`+`${value}`+`\")' >下載</button></td></tr>`;
+            if(imageslist[1]!=undefined){
+              if(`${value}` != 'NAME'){
+                table = table +`<tr><th scope="row">`+`${value}`+`</th><td><button type="button" class="btn btn-secondary download" onclick='download(\"`+`${value}`+`\")' >下載</button></td></tr>`;
+              }
+            }else{
+              table = `<tr><th scope="row" class="text-center" colspan="2">查無資料</th></tr>`;
             }
           });
           $('#imglist').html(table);
@@ -34,84 +44,137 @@ $(document).ready(function(){
       
   });
   });
+  
 });
 function download(id){
-  var fddjs = new FormData();
+  var obj=$('#searchimages').val()
+  fddjs.append('apikey', 'kqzt+7MNF0nJFf+3uB8tRw==');
+  if(id=="download"){
+    fddjs.append('images',$('#images_name').val());
+  }else{
+    fddjs.append('images',id);
+  }
+  fddjs.append('status', 'download');
+  $.ajax({ //kubectll get pods
+    type: "post",
+    url: 'http://dic-con.vbfaka.com/sys/images/prg/images_dow.php',
+    data: fddjs,
+  //  dataType: "json",
+    processData: false,
+    //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
+    contentType: false,
+    
+    success: function (result, status) {
+        let odj=JSON.parse(result);
+        if(odj[0]==false)
+        {
+          alert(odj[1]);
+        }
+        else if(odj[0]==true){
+          download_join(id);
+        }
+    }
+  });
+
+};
+
+function download_join(id){
   var obj=$('#searchimages').val()
   fddjs.append('apikey', 'kqzt+7MNF0nJFf+3uB8tRw==');
   fddjs.append('images', id);
-  fddjs.append('down', 'true');
+  fddjs.append('status', 'download_join');
   $.ajax({ //kubectll get pods
     type: "post",
-    url: 'http://120.114.142.17/sys/images/prg/images_dow.php',
+    url: 'http://dic-con.vbfaka.com/sys/images/prg/images_dow.php',
+    data: fddjs,
+  //  dataType: "json",
+    processData: false,
+    //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
+    contentType: false,
+    /*
+    success: function (result, status) {
+      console.log(result);
+      $('#exampleModal').modal('hide');
+      window.location.reload();
+    }*/
+  });
+  window.setTimeout(( () =>   download_status() ), 1000);
+};
+function download_status(){
+  fddjs.append('apikey', 'kqzt+7MNF0nJFf+3uB8tRw==');
+  fddjs.append('status', 'download_status');
+  $.ajax({ //kubectll get pods
+    type: "post",
+    url: 'http://dic-con.vbfaka.com/sys/images/prg/images_dow.php',
+    data: fddjs,
+  //  dataType: "json",
+    processData: false,
+    //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
+    contentType: false,
+    
+    success: function (result, status) {
+      let odj=JSON.parse(result);
+      let table;
+      Object.entries(odj).forEach(([key, value]) => {  
+        if(value["imagestatus"]=="true"){
+          table = table +`<tr><th scope="row" ">`+value["imagenamne"]+`</th><td><button type="submit" class="btn btn-danger my-1" onclick="imgdelete('`+value["imagenamne"]+`')">刪除</button></td></tr>`;
+        }else if(value["imagestatus"]=="ready"){
+          let math = Math.floor(Math.random()*50);
+          table = table +`<tr><th scope="row" ">`+value["imagenamne"]+`</th><td id=`+math+`><b><div class="spinner-border" role="status"><span class="visually-hidden">下載中...</span></div></b></td></tr>`;
+          img_status(value["imagenamne"],math);}
+          else if(value["imagestatus"]=="delete"){
+            download_status();
+          }else if(value["imagestatus"]=="false"){
+          table = table +`<tr><th scope="row" ">`+value["imagenamne"]+`</th><td><b>下載失敗</b></br><button type="submit" class="btn btn-danger my-1" onclick="imgdelete('`+value["imagenamne"]+`')">刪除</button></td></tr>`;
+        }
+      });
+      $('.imglistok').html(table);
+    }
+  });
+}
+function img_status(image,math){
+  fddjs.append('apikey', 'kqzt+7MNF0nJFf+3uB8tRw==');
+  fddjs.append('images', image);
+  fddjs.append('status', 'img_status');
+  $.ajax({ //kubectll get pods
+    type: "post",
+    url: 'http://dic-con.vbfaka.com/sys/images/prg/images_dow.php',
     data: fddjs,
   //  dataType: "json",
     processData: false,
     //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
     contentType: false,
     success: function (result, status) {
-      $('#exampleModal').modal('hide');
-      window.location.reload();
+        let odj=JSON.parse(result);
+          if(odj[0]["imagestatus"]=="ready"){
+            window.setTimeout(( () =>   img_status(image,math) ), 2000);
+          }else if(odj[0]["imagestatus"]=="true"){
+            $('#'+math).html(`<button type="submit" class="btn btn-danger my-1" onclick="imgdelete('`+image+`')">刪除</button>`);
+          }else{
+            $('#'+math).html(`<b>下載失敗</b><button type="submit" class="btn btn-danger my-1" onclick="imgdelete('`+image+`')">刪除</button>`);
+          }
+        console.log(odj);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      window.location();
     }
   });
-};
-  $(document).ready(function(){
-    let myvars=`<div class="modal-title" id="exampleModalLabel"><b>加載中</b>
-    <div class="spinner-grow text-dark" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow text-dark" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow text-dark" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow text-dark" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div></div>`;
-    document.querySelector('#imagestatus').innerHTML = myvars;
-    var fddjs = new FormData();
-    fddjs.append('apikey', 'kqzt+7MNF0nJFf+3uB8tRw==');
-    $.ajax({ //kubectll get pods
-        type: "post",
-        url: 'http://120.114.142.17/sys/images/prg/images_status.php',
-        data: fddjs,
-      //  dataType: "json",
-        processData: false,
-        //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
-        contentType: false,
-        success: function (result, status) {
-          //  console.log(JSON.parse(result));
-            var table="";
-            Object.entries(JSON.parse(result)).forEach(([key, value]) => {  
-              //console.log(value.user)
-              if(value.user == "defaults" ){
-                var str=value.name
-                str=str.replace('10.255.1.254:5000/defaults/', '')
-                table = table +`<tr><th scope="row" ">`+str+`</th><td><button type="submit" class="btn btn-danger my-1" onclick="imgdelete('`+value.name+`')">刪除</button></td></tr>`;
-              }
-            });
-            $('.imglistok').html(table);
-        }
-    });
-  });
-  function imgdelete(name) {
-    $('#exampleModal').modal('show');
+}
+
+  function imgdelete(imagename) {
+    /*$('#exampleModal').modal('show');
     document.querySelector('#exampleModalLabel').innerHTML = "系統訊息";
-    document.querySelector('.modal-body').innerHTML = "刪除中";
-    fddjs.append('student', student);
-    fddjs.append('containername', name);
+    document.querySelector('.modal-body').innerHTML = "刪除中";*/
+    fddjs.append('images', imagename);
+    fddjs.append('status', 'imgdelete');
     $.ajax({
       type: "post",
-      url: 'http://120.114.142.17/sys/images/prg/images_delete.php',
+      url: 'http://dic-con.vbfaka.com/sys/images/prg/images_dow.php',
       data: fddjs,
       //  dataType: "json",
       processData: false,
       //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
       contentType: false,
-      success: function (result, status) {
-        window.location.reload();
-      }
     });
+    download_status();
   };
