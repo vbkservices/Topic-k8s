@@ -39,38 +39,92 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-6">
-                    <div class="row position-relative fs-4">
-                        <div class="col-12 position-absolute top-0 start-50 translate-middle-x">
-                            <h1 class="text-left my-2 ">部屬測試</h1>
-                                <div class="form-group row my-2">
-                                    <label for="course" class="col-sm-12 col-form-label">容器類別</label></p>
-                                    <div class="col-sm-12 py-2">
-                                        <select class="form-control form-control-sm" id="contianer">
-                                            <option value="student" selected>學生容器</option>
-                                            <option value="teacher">教師容器</option>
-                                            <option value="system">系統容器</option>
-                                        </select>
+            <div class="row imagestmux" style="height:85%;">
+                <div class="col-9 border border-dark" style="position: relative;height:100%" id="xtream">
+                    <div style="position: absolute;top: 50%;right : 50%; ">
+                        <h4><b>容器畫面展示處</b></h4>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="row" style="height: 100%;">
+                        <div class="col-12" >
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">容器詳細</button>
+                                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">部署容器</button>
+                                </div>
+                              </nav>
+                              <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <div class="row py-3" id="containerlist">
+        
                                     </div>
                                 </div>
-                                <div class="form-group row my-2">
-                                    <label for="images" class="col-sm-12 col-form-label">選擇映像檔</label></p>
-                                    <div class="col-sm-12 py-2">
-                                        <select class="form-control form-control-sm" id="images">
-                                            <option value="rockylinux" selected>預設(rockylinux)</option>
-                                            <option value="rockylinux" >rockylinux</option>
-                                            <option value="mysql">mysql</option>
-                                            <option value="httpd">httpd</option>
-                                        </select>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                    <div class="row position-relative fs-4">
+                                        <div class="col-12 position-absolute top-0 start-50 translate-middle-x">
+                                                <div class="form-group row my-2">
+                                                    <label for="course" class="col-sm-12 col-form-label">名字</label></p>
+                                                    <div class="col-sm-12 py-2">
+                                                        <input type="text" class="form-control" id="containername" placeholder="images name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row my-2">
+                                                    <label for="images" class="col-sm-12 col-form-label">選擇映像檔</label></p>
+                                                    <div class="col-sm-12 py-2">
+                                                        <select class="form-control form-control-sm" id="images">
+                                                            <option selected>點擊選擇映像檔</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row my-2">
+                                                    <label for="webfile" class="col-sm-12 col-form-label">上傳檔案</label></p>
+                                                    <div class="col-sm-12 py-2">
+                                                        <select class="form-control form-control-sm" id="webfile">
+                                                            <option selected>功能未開放</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row my-2" id="imagcreate">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary my-1" onclick="imgcreate()">開啟</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary my-1" id="yaml">開啟</button>
+                              </div>
+                        </div>
+                        <div class="col-12 imgbash" style="height:500px;">
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><b>上傳中</b></h5>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <div class="modal-body">
+                <b>請勿關閉畫面及刷新頁面</b>
+            </div>
+          </div>
+        </div>
+      </div>
 
 </body>
 

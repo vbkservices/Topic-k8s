@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../../bootstarp/css/style.css">
+<script src="../../nav/users/nav.js"></script>
+<script src="./js/pod_contaner.js"></script>
+
+<body>
+    <div class="bg-ligth">
+        <!--左引導列-->
+        <!--左小圖標-->
+        <!--中間版面-->
+        <div class="px-3">
+            <div class="bg-ligth py-4">
+                <div class="row">
+                    <div class="col-12" id="center-logo">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-sm-3 mt-4">
+                <div class="col-12">
+                    <ul class="nav nav-tabs">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="text-center modal-title"><b>建立容器</b></h1>
+
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row  my-2">
+                        <label for="contianer" class="col-sm-4 col-form-label">容器名</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="container_name" placeholder="contianer name">
+                        </div>
+                    </div>
+                    <div class="form-group row my-2">
+                        <label for="images" class="col-sm-4 col-form-label">選擇映像檔</label>
+                        <div class="col-sm-8 py-2" id="">
+                            <select class="form-control form-control-sm" id="namepace_images_status">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div id="httpifname">
+                        <div class="form-group row my-2">
+                            <label for="images" class="col-sm-4 col-form-label">容量</label>
+                            <div class="col-sm-2 py-2">
+                                <select class="form-control form-control-sm" id="container_volume">
+                                    <option value="0.5">0.5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row my-2 ">
+                            <label for="cpu" class="col-sm-2 col-form-label">cpu</label>
+                            <div class="col-sm-4 py-2">
+                                <select class="form-control form-control-sm" id="container_cpu">
+                                    <option value="0.5">0.5</option>
+                                </select>
+                            </div>
+                            <label for="memory" class="col-sm-2 col-form-label">memory</label>
+                            <div class="col-sm-4 py-2">
+                                <select class="form-control form-control-sm" id="container_memory">
+                                    <option value="0.5">0.5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="model_button">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

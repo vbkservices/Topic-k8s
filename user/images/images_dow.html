@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../../bootstarp/css/style.css">
+<script src="../../nav/users/nav.js"></script>
+<script src="./js/images_dow.js"></script>
+
+<body>
+    <div class="body bg-ligth">
+        <!--左引導列-->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav">
+                </div>
+            </div>
+        </div>
+        <!--左小圖標-->
+        <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
+        <!--中間版面-->
+        <div class="center px-3">
+            <div class="bg-ligth py-4" style="height:15%;">
+                <div class="row">
+                    <div class="col-12" id="center-logo">
+                    </div>
+                    <div class="col-12 my-4">
+                        <a class="btn btn-dark py-1 mx-2 html" href="images.html" value="master">映像檔</a>
+                        <a class="btn btn-dark py-1 mx-2 html" href="images_create.html" value="node1">製作映像檔</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-lg-5">
+                <div class="col-10">
+                    <div class="row position-relative fs-4">
+                        <div class="col-7 my-2">
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                aria-describedby="basic-addon1" id="searchimages">
+                            <a class="btn btn-dark py-1 mx-2  my-2 search">查詢</a>
+                        </div>
+                        <div class="col-6 my-2">
+                            <table class="table">
+                                <thead class="text-muted">
+                                    <tr>
+                                        <th scope="col">映像檔<i class="mx-1 fa fa-sort-desc"></i></th>
+                                        <th scope="col">下載<i class="mx-1 fa fa-sort-desc"></i></th>
+                                    </tr>
+                                </thead>
+                                </thead>
+                                <tbody id="imglist">
+                                    <tr>
+                                        <th colspan="6" class="text-center">
+
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6 my-2">
+                            <table class="table">
+                                <thead class="text-muted">
+                                    <tr>
+                                        <th scope="col">映像檔<i class="mx-1 fa fa-sort-desc"></i></th>
+                                        <th scope="col">已下載<i class="mx-1 fa fa-sort-desc"></i></th>
+                                    </tr>
+                                </thead>
+                                </thead>
+                                <tbody class="imglistok" id="imglistok">
+                                    <tr>
+                                        <th colspan="6" class="text-center" id="imagestatus">
+
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><b>映像檔下載中</b></h5>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <div class="modal-body">
+                <b>請勿關閉畫面及刷新頁面</b>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
+</html>

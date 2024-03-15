@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../bootstarp/css/style.css">
+<script src="../nav/nav.js"></script>
+<script src="../nav/navber.js"></script>
+<script src="./js/namespase_container.js"></script>
+<body>
+    <div class="body bg-ligth">
+        <!--左引導列-->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav">
+                </div>
+            </div>
+        </div>
+        <!--左小圖標-->
+        <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
+        <!--中間版面-->
+        <div class="center px-3">
+            <div class="bg-ligth pt-4">
+                <div class="row  justify-content-center">
+                    <div class="col-12" id="center-logo">
+                    </div>
+                    <div class="col-12 mt-4" id="namespace_nav">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card text-center px-0 col-5" id="namespace_containers">
+                    <div class="card-header fs-5" id="pod_action">
+
+                    </div>
+                    <div class="card-body" id="mypod">
+
+
+                    </div>
+                </div>
+                <div class="card text-center px-0 col-7" id="namespace_containers">
+                    <div class="card-header fs-5">
+                        <b>課程內學生</b>
+                    </div>
+                    <div class="card-body px-2" id="example">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">課程</th>
+                            <th scope="col">建立者</th>
+                            <th scope="col">狀態</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody id="table_pod">
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                    
+  
+                  </div>
+                  <div class="modal-body">
+
+                      <div class="form-group row my-2" id="add_volume">
+
+                    </div>
+                      <div id="model_button">
+  
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</body>
+
+</html>

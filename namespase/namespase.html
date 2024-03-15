@@ -4,6 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="../bootstarp/js/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../bootstarp/node_modules/jquery.dataTables.min.css">
 <link href="../bootstarp/css/bootstrap.css" rel="stylesheet">
 <script src="../bootstarp/js/bootstrap.bundle.min.js"></script>
 
@@ -14,48 +16,125 @@
 
 <body>
     <div class="body bg-ligth">
+        <!--左引導列-->
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="left position-relative">
-                <div class="container pt-2" id="nav"></div>
+                <div class="container pt-2" id="nav">
+                </div>
             </div>
         </div>
-        <div class="left-sm h4 px-3 pt-3" id="nav-sm"></div>
-
+        <!--左小圖標-->
+        <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
+        <!--中間版面-->
         <div class="center px-3">
-            <div class="bg-ligth py-4" style="height:15%;">
-                <div class="row">
-                    <div class="col-12"  id="center-logo">
+            <div class="bg-ligth pt-4">
+                <div class="row  justify-content-center">
+                    <div class="col-12" id="center-logo">
                     </div>
-                    <div class="col-12 my-4">
-                        <a class="btn btn-dark py-1 mx-2 html" href="namespase.html" value="master">查看課程</a>
-                        <a class="btn btn-dark py-1 mx-2 html" href="namespase_create.html" value="node1">部屬課程</a>
-                        <a class="btn btn-dark py-1 mx-2 html" href="namespase_delete.html" value="node2">刪除課程</a>
+                    <div class="col-12 mt-4" id="iden_nav">
+
+                    </div>
+                    <div class="col-12">
+                        <div class="text-dark fs-3 bg-secondary text-white text-center my-2"><b>課程<i	class="fa fa-long-arrow-right mx-1"></i>查看課程</b></div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="left-sm col-2">
-
-                </div>
-                <div class="col-12">   
-                <table class="table mt-3" style="width:100%">
-                    <thead class="h4">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col ">container</th>
-                            <th scope="col">time</th>
-                            <th scope="col">user</th>
-                            <th scope="col">UUID</th>
-                        </tr>
-                    </thead>
-                    <tbody id="example">
-                    </tbody>
-                </table>
+                <div class="col-12" id="example">
+                    <table class="table border table-bordered text-center" style="width:100%">
+                        <thead class="h6 bg-warning bg-gradient  bg-opacity-25 rounded-3 border-2" id="namespace_table">
+  
+                        </thead>
+                        <tbody id="namespace_status">
+                        </tbody>
+                    </table>
+                      
+                      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBottom" style="width: 43vw;">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class=" container ">
+                                <div class=" d-flex align-items-start my-4 row">
+                                    <div class="nav col-3 flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
+                                        aria-orientation="vertical">
+                                        <button class="nav-link active " id="v-pills-class-tab" data-bs-toggle="pill"
+                                            data-bs-target="#v-pills-class" type="button" role="tab" aria-controls="v-pills-class"
+                                            aria-selected="true">課程資訊</button>
+                                        <button class="nav-link" id="v-pills-student-tab" data-bs-toggle="pill"
+                                            data-bs-target="#v-pills-student" type="button" role="tab" aria-controls="v-pills-student"
+                                            aria-selected="false">學生名單</button>
+                                        <button class="nav-link" id="v-pills-imges-tab" data-bs-toggle="pill"
+                                            data-bs-target="#v-pills-imges" type="button" role="tab" aria-controls="v-pills-imges"
+                                            aria-selected="false">課程硬碟</button>
+                                        <!--button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
+                                            data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
+                                            aria-selected="false">Settings</button-->
+                                    </div>
+                
+                                    <div class="tab-content col-8" id="v-pills-tabContent">
+                                        <div class="tab-pane fade show active" id="v-pills-class" role="tabpanel"
+                                            aria-labelledby="v-pills-class-tab">
+                                            <table class="table">
+                                                <!--thead>
+                                                            <tr>
+                                                              <th scope="col">#</th>
+                                                              <th scope="col">First</th>
+                                                              <th scope="col">Last</th>
+                                                              <th scope="col">Handle</th>
+                                                            </tr>
+                                                          </thead-->
+                                                <tbody id="namespase_tables">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-student" role="tabpanel"
+                                            aria-labelledby="v-pills-student-tab">
+                                            <table class="table fs-5 text-center">
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-imges" role="tabpanel"
+                                            aria-labelledby="v-pills-imges-tab">
+                                            <table class="table fs-5  text-center">
+                                            </table>
+                                        </div>
+                                        <!--div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                                            aria-labelledby="v-pills-settings-tab">...</div-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="modal fade" id="k8s_Modal" tabindex="-1" aria-labelledby="k8s_ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="k8s_ModalLabel"><b>映像檔下載中</b></h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table mt-3" style="width:100%">
+                            <thead class="h6">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col" id="students">學號</th>
+                                    <th scope="col" id="add_th"></th>
+                                    <th scope="col" id="cont_status">選項</th>
+                                </tr>
+                            </thead>
+                            <tbody id="model_example">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </body>
 
 </html>

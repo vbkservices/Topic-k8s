@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../../bootstarp/css/style.css">
+<script src="../../nav/users/nav.js"></script>
+<script src="./js/images_create.js"></script>
+<script src="../prg/js/kube_iden.js"></script>
+<body>
+    <div class="body bg-ligth">
+        <!--左引導列-->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="left position-relative">
+                <div class="container pt-2" id="nav">
+                </div>
+            </div>
+        </div>
+        <!--左小圖標-->
+        <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
+        <!--中間版面-->
+        <div class="center px-3">
+            <div class="bg-ligth pt-4">
+                <div class="row  justify-content-center">
+                    <div class="col-12" id="center-logo">
+                    </div>
+                    <div class="col-12 mt-3 p-0">
+                        <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+                          <ol class="breadcrumb fs-5">
+                              <li class="breadcrumb-item mx-2">
+                                  <a href="http://dic-con.vbfaka.com/sys/user/images/images.html"><i
+                                          class="fa fa-search px-1"></i>查看硬碟</a>
+                              </li>
+                              <li class="breadcrumb-item"><a
+                                      href="http://dic-con.vbfaka.com/sys/user/images/images_create.html">
+                                      <i class="fa fa-plus-square	px-1"></i>編輯硬碟環境</a></li>
+                          </ol>
+                      </nav>
+                      </div>
+                      <div class="col-12">
+                        <div class="text-dark fs-3 bg-secondary text-white text-center my-2"><b>硬碟<i	class="fa fa-long-arrow-right mx-1"></i>編輯硬碟環境</b></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="images_status">
+                <div class="row">
+                    <div class="card col-9 p-0">
+                        <div class="card-body p-0">
+                            <!--p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.sssssssssssssss</p-->
+                            <table class="table table-hover fs-5">
+                                <thead style="background-color: rgba(241, 240, 238, 0.822);">
+                                    <tr>
+                                        <th scope="col">硬碟環境</th>
+                                        <th scope="col">狀態</th>
+                                        <th scope="col">使用硬碟</th>
+                                        <th scope="col">編輯時間</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="images_status_table">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card col-3 px-0 ">
+                        <div class="card-header m-0 fs-5 border-dark text-center">
+                            <b>選擇參數</b>
+                        </div>
+                        <div class="card-body p-0 text-start">
+                            <div class="row justify-content-md-center">
+                                <div class="col-md-10 mt-2">
+                                    <form class="needs-validation">
+                                        <div class="form-group">
+                                            <label for="containername" class="form-label fs-5"><b>硬碟環境 :</b></label>
+                                            <input type="text" class="form-control" id="containername"
+                                            aria-describedby="emailHelp"  onkeyup="this.value=this.value.replace(/\s+/g,'')" required>
+                                            <small id="emailHelp" class="form-text text-muted">(不能有空白字元)</small>
+                                        </div>
+
+                                        <div class="form-group" id="user_image">
+      
+                                        </div>
+                                        
+                                       
+                                        <div class="mb-0" id="rodde_images"></div>
+                                        <div class="my-3 " id="reg_images"> </div>
+                                        <button type="submit" class="btn btn-primary"
+                                            onclick="imgcreate()">建立環境</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header border-dark text-center">
+                            <b>上傳檔案</b>
+                          </div>
+                          <div class="card-body">
+                            <div class="form-group my-2">
+                                <small id="emailHelp" class="form-text fs-5 text-muted">上傳後的檔案會在開啟容器時放在/下的使用者名稱目錄</small></br>
+                                <input type="file" id="file-uploader" data-target="file-uploader" accept=".sql"  multiple="multiple"/></br>
+                                <small id="emailHelp" class="form-text text-muted">目前階段只支援sql檔</small>
+                                <div id="file_status"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary"
+                            onclick="push_filer()">上傳檔案</button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--div class="modal-header">
+                    映像檔上傳
+                </div-->
+                <div class="modal-body">
+                    <form class="form-model needs-validation">
+                        <div class="form-group my-4">
+                            <label for="image_name" class="form-label fs-5"><b>硬碟名稱 :</b></label>
+                            <input type="text" class="form-control" id="image_name"
+                            aria-describedby="emailHelp" required>
+                            <small id="emailHelp" class="form-text text-muted">該欄位名稱將會是映像檔名字(只能小寫英文)</small>
+                        </div>
+                
+                        <div class="form-group my-4" id="user_image">
+                
+                        </div>
+                
+                        <div class="form-group my-4">
+                          <label for="image_text" class="form-label fs-5"><b>硬碟訊息</b></label>
+                          <small id="image_text" class="form-text text-muted">(非必要)</small>
+                          <textarea id="image_text"  class="form-control"  name="image_text"  rows="8" cols="100"></textarea>
+                          <br>
+                        </div>
+                        <div class="mb-0" id="rodde_images"></div>
+                        <div class="mb-3" id="images"> </div>
+                        <div class="mb-3" id="push_button"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

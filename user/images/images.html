@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<title>管理者介面</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../bootstarp/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../../bootstarp/node_modules/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../../bootstarp/node_modules/jquery.dataTables.min.css">
+<link href="../../bootstarp/css/bootstrap.css" rel="stylesheet">
+<script src="../../bootstarp/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="../../bootstarp/css/style.css">
+<script src="../../nav/users/nav.js"></script>
+<script src="./js/images.js"></script>
+<script src="../prg/js/kube_iden.js"></script>
+
+<body>
+  <div class="body bg-ligth">
+    <!--左引導列-->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="left position-relative">
+        <div class="container pt-2" id="nav">
+        </div>
+      </div>
+    </div>
+    <!--左小圖標-->
+    <div class="left-sm h4 px-3 pt-3 d-xl-block d-none" id="nav-sm"></div>
+    <!--中間版面-->
+    <div class="center px-3">
+      <div class="bg-ligth pt-4">
+        <div class="row  justify-content-center">
+            <div class="col-12" id="center-logo">
+            </div>
+            <div class="col-12 mt-3 p-0" >
+              <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+                <ol class="breadcrumb fs-5">
+                    <li class="breadcrumb-item mx-2">
+                        <a href="http://dic-con.vbfaka.com/sys/user/images/images.html"><i
+                                class="fa fa-search px-1"></i>查看硬碟</a>
+                    </li>
+                    <li class="breadcrumb-item"><a
+                            href="http://dic-con.vbfaka.com/sys/user/images/images_create.html">
+                            <i class="fa fa-plus-square	px-1"></i>編輯硬碟環境</a></li>
+                    </li>
+                </ol>
+            </nav>
+            </div>
+            <div class="col-12">
+                <div class="text-dark fs-3 bg-secondary text-white text-center my-2"><b>硬碟<i	class="fa fa-long-arrow-right mx-1"></i>查看硬碟</b></div>
+            </div>
+        </div>
+    </div>
+
+      <div id="images_status">
+        <div class="row justify-content-center">
+          <div class="card col-7 p-0 ">
+            <div class="card-header m-0 fs-5 border-dark text-center" id="use_images">
+              images
+            </div>
+            <div class="card-body p-0 card-image">
+              <!--p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.sssssssssssssss</p-->
+              <table class="table table-hover fs-5">
+                <thead style="background-color: rgba(241, 240, 238, 0.822);">
+                  <tr>
+                    <th scope="col">硬碟</th>
+                    <th scope="col">版本</th>
+                    <th scope="col">容量</th>
+                    <th scope="col">建立時間</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="images_status_table">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card col-4 ms-3 px-0 ">
+            <div class="card-header m-0 fs-5 border-dark text-center">
+              <b>本地倉庫</b>
+            </div>
+            <div class="card-body p-0">
+              <table class="table table-hover fs-5">
+                <thead style="background-color: rgba(241, 240, 238, 0.822);">
+                  <tr>
+                    <th scope="col">硬碟</th>
+                    <th scope="col">版本</th>
+                    <th scope="col">容量</th>
+                  </tr>
+                </thead>
+                <tbody id="load_images_status_table">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-end w-25" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close text-start" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <!--h5>Offcanvas right</h5-->
+    </div>
+    <div class="offcanvas-body w-75">
+      <form class="needs-validation">
+        <div class="form-group my-4">
+            <label for="containername" class="form-label fs-5"><b>硬碟名稱 :</b></label>
+            <input type="text" class="form-control" id="containername"
+            aria-describedby="emailHelp" pattern="{3,}$" required>
+            <small id="emailHelp" class="form-text text-muted">該欄位名稱將會是映像檔名字(只能小寫英文)</small>
+        </div>
+
+        <div class="form-group my-4" id="user_image">
+
+        </div>
+
+        <div class="form-group my-4">
+          <label for="image_text" class="form-label fs-5"><b>硬碟訊息</b></label>
+          <small id="image_text" class="form-text text-muted">(非必要)</small>
+          <textarea id="image_text"  class="form-control"  name="image_text"  rows="8" cols="100"></textarea>
+          <br>
+        </div>
+        <div class="mb-0" id="rodde_images"></div>
+        <div class="mb-3" id="images"> </div>
+        <button type="submit" class="btn btn-primary"
+            onclick="imgcreate()">新增硬碟</button>
+
+    </form>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel"><b>映像檔下載中</b></h2>
+          <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div class="modal-body">
+          <b>請勿關閉畫面及刷新頁面</b>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
